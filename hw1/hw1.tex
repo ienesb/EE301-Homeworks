@@ -27,39 +27,36 @@
 }
 \onehalfspacing
 
-\raggedright
+% \raggedright
 
-% \title{EE230 Homework-1}
-\author{İsmail Enes Bülbül}
-\date{October 2022}
+\title{EE301 Homework-1}
+\author{İsmail Enes Bülbül, Eren Meydanlı, Ahmet Caner Akar}
+%\date{October 2022}
 \renewcommand*\contentsname{Table of Contents}
 \renewcommand*{\refname}{}
 % \fancyhf{} % sets both header and footer to nothing
 % \renewcommand{\headrulewidth}{0pt}
 \begin{document}
-% \pagestyle{fancy}
-% \fancyhead{} % clear all header fields
-% \fancyhead[RO,LE]{Date: 28.10.2022}
-% \fancyhead[LO,LE]{Name: İsmail Enes Bülbül\\Assistant: Cemil Cömert}
 
-% \maketitle
+
+\maketitle
 % \tableofcontents
 % \newpage
 
 
-    \section*{1}
+    \section*{Question 1}
     \subsection*{System 1}
     \textbf{1 - }The system is memoryless since the value of the output \(y(t)\) depends on
     only the value of the input \(x(t)\) at present time instant.\\
     \textbf{2 - }To determine the linearity of the system, apply the input \(\alpha x(t)\) and let the
-    output \(\hat{y}(t)=\alpha x(t)cos(2\pi ft)=\alpha y(t) \longrightarrow\) the system is linear.\\
+    output \(\hat{y}(t)=\alpha x(t)cos(2\pi f_0t)=\alpha y(t) \longrightarrow\) the system is linear.\\
     \textbf{3 - }The system is causal since the output \(y(t)\) does not depend on the future
     value of the input \(x(t)\).\\
     \textbf{4 - }The system is time-variant. To see this, apply the input \(x(t-t_0)\) and let the
-    output \(\hat{y}(t)\) = \(x(t-t_0)cos(2\pi ft) \neq  y(t-t_0) = x(t-t_0)  cos(2\pi f(t-t_0))\).\\ 
+    output \(\hat{y}(t)\) = \(x(t-t_0)cos(2\pi f_0t) \neq  y(t-t_0) = x(t-t_0)  cos(2\pi f_0(t-t_0))\).\\ 
     \textbf{5 - }A system is said to be stable if any bounded input creates a bounded
     output. Let \(x(t)\) be a bounded. That is, there exist \(M > 0\) such that \(\left\lvert x(t)\right\rvert \leq  M\).
-    Also, \(-1 \leq cos(2\pi ft) \leq 1\). Thus, \(\left\lvert y(t)\right\rvert  = \left\lvert x(t)cos(2\pi ft)\right\rvert  \leq \left\lvert x(t)\right\rvert \left\lvert cos(2\pi ft)\right\rvert  \leq M \longrightarrow \) so the system is stable. \\
+    Also, \(-1 \leq cos(2\pi f_0t) \leq 1\). Thus, \(\left\lvert y(t)\right\rvert  = \left\lvert x(t)cos(2\pi f_0t)\right\rvert  \leq \left\lvert x(t)\right\rvert \left\lvert cos(2\pi f_0t)\right\rvert  \leq M \longrightarrow \) so the system is stable. \\
     \subsection*{System 2}
     \textbf{1 - }The system is memoryless.\\
     \textbf{2 - }The system is non-linear since if we apply the input \(\alpha x(t)\) then the output
@@ -120,33 +117,40 @@
       0,& x(t) < 0
     \end{cases}\). Hence, the system is stable. \\ 
  
-    \section*{2}
-    \subsection*{a}
+    \section*{Question 2}
+    \subsection*{a)}
     \begin{math}
-      y_1(t) = x_1(t)*h(t) = \int_{-\infty}^{t} \alpha^{t-\tau} \,d\tau = \frac{-1}{ln\alpha}  
+      y_1(t) = x_1(t)*h(t) = \int_{-\infty}^{\infty} \alpha^{t-\tau}u(t-\tau) \,d\tau = \int_{-\infty}^{t} \alpha^{t-\tau} \,d\tau \\
+      y_1(t) = \alpha^{t}\int_{-\infty}^{t} \alpha^{-\tau} \,d\tau =  \alpha^{t}\int_{-\infty}^{t} e^{ln(\alpha^{-\tau})} \,d\tau = \alpha^{t}\int_{-\infty}^{t} e^{-\tau ln\alpha} \,d\tau \end{math}\\
+      Let \begin{math}u = -\tau ln\alpha\ \end{math}then \begin{math}\frac{du}{d\tau} = -ln\alpha \Rightarrow  \frac{du}{ln\alpha} = -d\tau \end{math}\\
+      Then, the integral becomes: \begin{math} y_1(t) = \alpha^{t}\int_{\tau = -\infty}^{\tau = t} e^{u} \,\frac{-du}{ln\alpha} \end{math} \\
+       Thus, \begin{math} y_1(t) =  \frac{-\alpha^{t}}{ln\alpha} \left (e^{u}\Big|_{\tau=-\infty}^{\tau=t}\right )  \Rightarrow  y_1(t) =  \frac{-1}{ln\alpha}
     \end{math}\\ \\
     \begin{math}
-      y_2(t) = x_2(t)*h(t) = \int_{-\infty}^{\infty} x_2(\tau)h(t-\tau) \,d\tau \\
+     y_2(t) = x_2(t)*h(t) = \int_{-\infty}^{\infty} x_2(\tau)h(t-\tau) \,d\tau = \int_{-\infty}^{\infty} u(\tau)\alpha^{t-\tau}u(t-\tau) \,d\tau \\ 
     \end{math}
     For \(t < 0\), \(y_2(t) = 0\)\\
-    For \(t > 0\),
-    \begin{math}
-      y_2(t) = \int_{0}^{t} \alpha^{t-\tau} \,d\tau = \frac{\alpha^t-1}{ln\alpha} \\
-      y_2(t) = \frac{\alpha^t-1}{ln\alpha}u(t)
+    For \(t \geq 0\), \(y_2(t)\)= \begin{math} \int_{0}^{t} \alpha^{t-\tau} \,d\tau \end{math}\\
+    As we did in the calculation of \(y_1(t)\), use the method of integration by substution.\\  
+      Then, the integral becomes: \begin{math} y_2(t) = \frac{-\alpha^{t}}{ln\alpha} \left (e^{u}\Big|_{\tau=0}^{\tau=t}\right )  \Rightarrow  y_2(t)  = \frac{\alpha^t-1}{ln\alpha} \end{math}, for \(t \geq 0\) \\
+     Therefore, \begin{math} y_2(t) = \frac{\alpha^t-1}{ln\alpha}u(t)  
     \end{math} \\ \\
-    \begin{math}
-      y_3(t) = x_3(t)*h(t) = \int_{-\infty}^{\infty} x_3(\tau)h(t-\tau) \,d\tau \\
+   Similarly, 
+ \begin{math}
+      y_3(t) = x_3(t)*h(t) = \int_{-\infty}^{\infty} x_3(\tau)h(t-\tau) \,d\tau = \int_{-\infty}^{\infty} u(-\tau-1)\alpha^{t-\tau}u(t-\tau) \,d\tau \\
     \end{math}
     For \(t < -1\),
     \begin{math}
       y_3(t) = \int_{-\infty}^{t} \alpha^{t-\tau} \,d\tau = \frac{-1}{ln\alpha} \\
     \end{math}
-    For \(t > -1\),
+    For \(t \geq -1\),
     \begin{math}
-      y_3(t) = \int_{-\infty}^{-1} \alpha^{t-\tau} \,d\tau = \frac{-\alpha^{t+1}}{ln\alpha} \\
-      y_3(t) = \frac{-1}{ln\alpha} + (\frac{-\alpha^{t+1} + 1}{ln\alpha})u(t+1)
-    \end{math}
-    \subsection*{b}
+      y_3(t) = \int_{-\infty}^{-1} \alpha^{t-\tau} \,d\tau = \frac{-\alpha^{t+1}}{ln\alpha} \end{math} \\
+      Therefore, \begin{math} y_3(t) = \frac{-1}{ln\alpha} + (\frac{-\alpha^{t+1} + 1}{ln\alpha})u(t+1)
+    \end{math} \\ \\
+     As it can be seen in above calculations, to evaluate the output signal y(t) for each input signal x(t), we applied the convolution operation to each of them with the impulse response h(t). Although the integral expressions would be the same, the range of integration is different for each input. Also, the output \(y_3(t)\) is a time-reversed and shifted version of \(y_2(t)\).    
+
+    \subsection*{b)}
     Let \(x_5(t) = u(t+1)\). Then \(x_4(t) = x_5(t) - x_2(t)\).\\
     \(y_5(t) = x_5(t)*h(t) = y_2(t+1) = \frac{\alpha^{t+1}-1}{ln\alpha}u(t+1)\)\\
     \(y_4(t) = x_4(t)*h(t) = (x_5(t) - x_2(t))*h(t)\\
@@ -156,12 +160,12 @@
     \)
 
 
-    \section*{3}
-    \subsection*{a}
+    \section*{Question 3}
+    \subsection*{a)}
     Recall that in continuous-time systems one can apply the derivative
     operation to any arbitrary input signal. For example,\\
     \begin{math}
-      \Delta t = \frac{d}{dt}u(t)\longrightarrow \int_{\infty }^{-\infty }  \Delta t\,dt 
+      \delta(t) = \frac{d}{dt}u(t)\longrightarrow \int_{-\infty }^{\infty }  \delta(t)\,dt 
     \end{math}\\
     Also, it can be applied by using the formal definition of the derivative:\\
     \begin{math}
@@ -175,12 +179,12 @@
     Thus, the derivative operation in continuous-time systems is analogous of
     the difference operation in discrete-time. Hence, we can obtain the impulse
     response of the difference operation as: \(h[n] = \delta[n] - \delta[n-1]\)
-    \subsection*{b}
+    \subsection*{b)}
     By convolution, \(y[n] = x[n]*h[n] = x[n]*(\delta[n]-\delta[n-1])\)\\
     By distributive property of the convolution operation,\\ 
     \(x[n]*( \delta[n] – \delta[n-1]) = (x[n]* \delta[n]) – (x[n]* \delta[n-1])\)\\
     \(y[n] = x[n] – x[n-1]\)
-    \subsection*{c}
+    \subsection*{c)}
     \begin{math}
       e^{j\Omega_0n}(1-e^{-j\Omega_0}) = (cos(\Omega_0n) +jsin(\Omega_0n))(1-e^{-j\Omega_0}) \\
       =cos(\Omega_0n) + jsin(\Omega_0n) - (cos(\Omega_0n) + jsin(\Omega_0n))(cos(\Omega_0n) - jsin(\Omega_0n)) \\
@@ -188,28 +192,31 @@
       =cos(\Omega_0n) + jsin(\Omega_0n) - (cos(\Omega_0n)cos(\Omega_0) + sin(\Omega_0n)sin(\Omega_0)) -j(sin(\Omega_0n)cos(\Omega_0) - cos(\Omega_0n)sin(\Omega_0)) \\
       =cos(\Omega_0n) + jsin(\Omega_0n) - cos(\Omega_0n - \Omega_0) -jsin(\Omega_0n - \Omega_0) \\
       =cos(\Omega_0n) - cos(\Omega_0(n-1)) + j(sin(\Omega_0n) - sin(\Omega_0(n-1))) \\ \\
-      \left\lvert y[n]\right\rvert = ((cos(\Omega_0n) - cos(\Omega_0(n-1)))^2+(sin(\Omega_0n) - sin(\Omega_0(n-1)))^2)^{0.5} \\ 
-      = (cos^2(\Omega_0n) - 2cos(\Omega_0n)cos(\Omega_o(n-1)) + cos^2(\Omega_0(n-1))  +  sin^2(\Omega_0n) - 2sin(\Omega_0n)sin(\Omega_o(n-1)) + sin^2(\Omega_0(n-1)))^{0.5} \\
-      = (2 - 2(cos(\Omega_0n)cos(\Omega_0(n-1)) + sin(\Omega_0n)sin(\Omega_0(n-1))))^{0.5} \\
-      = (2-2cos(\Omega_0n-\Omega_0(n-1)))^{0.5}\\
-      = (2-2cos(\Omega_0))^{0.5}      
+      \left\lvert y[n]\right\rvert = [(cos(\Omega_0n) - cos(\Omega_0(n-1)))^2+(sin(\Omega_0n) - sin(\Omega_0(n-1)))^2]^{1/2} \\ 
+      = [cos^2(\Omega_0n) - 2cos(\Omega_0n)cos(\Omega_o(n-1)) + cos^2(\Omega_0(n-1))  +  sin^2(\Omega_0n) - 2sin(\Omega_0n)sin(\Omega_o(n-1)) + sin^2(\Omega_0(n-1))]^{1/2} \\
+      = \sqrt{2 - 2[cos(\Omega_0n)cos(\Omega_0(n-1)) + sin(\Omega_0n)sin(\Omega_0(n-1))]} \\
+      = \sqrt{2-2cos(\Omega_0n-\Omega_0(n-1))} \\
+      = \sqrt{2-2cos(\Omega_0)} \\       
     \end{math}
-    \subsection*{d}
+    \subsection*{d)}
     \begin{math}
       \Omega_0 = 0 \longrightarrow \left\lvert y[n]\right\rvert = \sqrt{2-2cos(0)} = 0 \\
       \Omega_0 = \frac{2\pi}{8} \longrightarrow \left\lvert y[n]\right\rvert = \sqrt{2-2cos(\frac{2\pi}{8})} = \sqrt{2-\sqrt{2}} \\
       \Omega_0 = \frac{2\pi}{4} \longrightarrow \left\lvert y[n]\right\rvert = \sqrt{2-2cos(\frac{2\pi}{4})} = \sqrt{2} \\
       \Omega_0 = \frac{2\pi}{2} \longrightarrow \left\lvert y[n]\right\rvert = \sqrt{2-2cos(\frac{2\pi}{2})} = 2 \\
-    \end{math}
-    \subsection*{e}
+    \end{math} \\
+As we have shown in part a), the given discrete-time LTI system is analagous to the derivative operation in continuous-time systems. Also, please remember that the derivative is defined as the rate of change of a function with respect to a variable. Here, as the frequency of the input x[n] is increased, the period becomes smaller and the values of the input function are changed more rapidly. Therefore, the rate of change of a input function is increased as the frequency is increased, and the modulus of the output \(|y[n]|\) is getting larger values.
+    \subsection*{e)}
     \(x[n] = u[n+5] - u[n-2]\) can be plotted as:\\
     \begin{tikzpicture}
         \begin{axis}[
             axis lines=middle,
             xlabel={$n$},
+            xlabel style={xshift=0.4cm},
             ylabel={$x[n]$},
-            xmin=-7, xmax=4,
-            ymin=-1, ymax=1,
+            ylabel style={yshift=0.4cm},
+	    xmin=-7, xmax=4.5,
+            ymin=-1, ymax=1.2,
             xticklabel style={
               anchor=north,
               inner sep=1pt,
@@ -228,9 +235,11 @@
       \begin{axis}[
           axis lines=middle,
           xlabel={$n$},
-          ylabel={$y[n]$},
-          xmin=-7, xmax=4,
-          ymin=-1, ymax=1,
+          xlabel style={xshift=0.4cm},
+	  ylabel={$y[n]$},
+          ylabel style={yshift=0.4cm},
+          xmin=-7, xmax=4.5,
+          ymin=-1, ymax=1.2,
           xticklabel style={
             anchor=north east,
             inner sep=1pt,
@@ -242,14 +251,14 @@
     From the graph of \(y[n]\), we can say that \(x[n]\) has edges at \(n=-5\) 
     and \(n=2\). 
 
-    \subsection*{f}
+    \subsection*{f)}
     From (d), we can say that magnitude of the output signal of the system 
     increases as the frequency increases. In (f), \(x[n]\) has rapid changes at 
     \(n=-5\) and \(n=2\), and as a result, \(y[n]\) has magnitude 1 at \(n=-5\) and 
     \(n=2\), and 0 elsewhere.
 
-    \section*{4}
-    \subsection*{a}
+    \section*{Question 4}
+    \subsection*{a)}
     \begin{math}
       h_1[n] = \sum_{k = -\infty}^{n+2}\delta [k] =
       \begin{cases}
@@ -264,7 +273,7 @@
    \end{cases} 
     = u[n-2]
     \end{math}
-    \subsection*{b}
+    \subsection*{b)}
     \textbf{i: }Both systems are not memoryless as the output 
     signals depend on past values of input signals.\\
     \textbf{ii: }System 1 is not causal as the output signal depends
@@ -274,7 +283,7 @@
     \textbf{iii: }Both systems have unbounded output signals for the input
     signal chosen as unit step function. Therefore, the 
     systems are not stable.
-    \subsection*{c}
+    \subsection*{c)}
     \subsubsection*{i.}
     The systems are connected in parallel, so we can calculate 
     the impulse response of the overall system \(h[n]\) as:\\
@@ -290,10 +299,15 @@
     \end{math}\\
     The system is neither memoryless nor causal since \(y[n]\)
     depends future values of \(x[n]\).\\
-    For a bounded input signal, we can say that there exist \(M>0\) 
-    such that \(\left\lvert x[n]\right\rvert < M \). Then \(\left\lvert y[n]\right\rvert  < 4M\) 
-    and \(y[n]\) is bounded, therefore the system is stable.
-    % \section*{5}
+    For a bounded input signal, we can say that there exist \(M > 0\) 
+    such that \(\left\lvert x[n]\right\rvert \leq M \). Then \(\left\lvert y[n]\right\rvert  \leq 4M\) 
+    and \(y[n]\) is bounded, therefore the system is stable. 
+   
+    \section*{Question 5}
+    \subsection*{a)}
+In calculating part of the question, we added zero vectors to end and beginning of the main vector to obtain correct results in range of \(0\leq n \leq N-1\), which can be seen in Appendix. Since we manually did that zero adding part, we deviated the result for \(n>N\) range. Because of this situation, our calculated result has only N value in range. On the other hand, MATLAB’s built-in function, \emph{conv()}, evaluate the convolution so that the size of the output is equal to \(N+L-1\). That's why the output graphs of convolution operation are different by using our function and MATLAB's built-in function as shown in Appendix. In fact, to get the same result that we got by using our function, one can specify an input argument, \emph{same}, to MATLAB's function so that the result gives the central part of the convolution operation. Otherwise, the built-in function gives the full convolution whose length is equal to \(N+L-1\).
+\subsection*{b)}
+The output signal looks more smoother in larger values of L. As we can observe that h[n] impulse response created accordingly to L which directly affects the convolution range. By saying range, we mean that how many \(x*h\) multiplication we will use to calculate one element of the output. So, this is why that the output signal gain more elements and more precise values when L gets larger. And also, we can observe that the L value expands the output range by expanding h[n] size. The MATLAB code and the resulting graphs for different values of L can be seen in Appendix. 
 
     
 
