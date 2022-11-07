@@ -313,7 +313,15 @@ b_k = \frac{1}{2} [cos(k\frac{4\pi}{5})+cos(k\frac{6\pi}{5})] - \frac{1}{2}j[sin
 Also, note that \begin{math} \boxed{sina-sinb = 2cos(\frac{a+b}{2})sin(\frac{a-b}{2})} \\ \\ 
 \textrm{Thus,} \ b_k = \frac{1}{2}[cos(k\frac{4\pi}{5})+cos(k\frac{6\pi}{5})] - j[cos(2\pi k)sin(k\frac{2\pi}{5})] \\
 \Rightarrow b_k = \frac{1}{2}(cos(k\frac{4\pi}{5})+cos(k\frac{6\pi}{5})) - jsin(k\frac{2\pi}{5}) \end{math} \\ 
-As a result, it can be seen that \(b_k\) is not real-valued, so the signal \(x_2(t-5)\) is not even. \\
+As a result, it can be seen that \(b_k\) is not real-valued, so the signal \(x_2(t-5)\) is not even. 
+ \subsection*{d)}
+By differentiation property of Continuous Time Fourier Series: \\
+\begin{math} \frac{d}{dt}x_2(t) = \displaystyle\sum_{k=-\infty}^{\infty} cos(k\pi) jk\frac{2\pi}{50} e^{jk\frac{2\pi}{50}} \Rightarrow \textrm{is a periodic signal with Fourier series coefficients}\ c_k \\ 
+\textrm{such that}\ c_k = cos(k\pi) jk\frac{2\pi}{50}. \\
+c^{*}_k = -jk\frac{2\pi}{50}cos(k\pi) \quad \textrm{and} \quad c_{-k} = j(-k)\frac{2\pi}{50}cos(-k\pi) = -jk\frac{2\pi}{50}cos(k\pi) \\ 
+c^{*}_k = c_{-k} \Rightarrow \frac{d}{dt}x_2(t) \textrm{is real-valued.} \end{math} \\ \\
+Note that, \(cos(k\pi)\) take only the values \(+1\) or \(-1\), so it is always real-valued. However, \(-jk\frac{2\pi}{50}\) is purely imaginary. Therefore, \(\frac{d}{dt}x_2(t)\) is not even.
+\subsection*{e)}
     \section*{Question 5}
     \subsection*{a)}
 In calculating part of the question, we added zero vectors to end and beginning of the main vector to obtain correct results in range of \(0\leq n \leq N-1\), which can be seen in Appendix. Since we manually did that zero adding part, we deviated the result for \(n>N\) range. Because of this situation, our calculated result has only N value in range. On the other hand, MATLAB’s built-in function, \emph{conv()}, evaluate the convolution so that the size of the output is equal to \(N+L-1\). That's why the output graphs of convolution operation are different by using our function and MATLAB's built-in function as shown in Appendix. In fact, to get the same result that we got by using our function, one can specify an input argument, \emph{same}, to MATLAB's function so that the result gives the central part of the convolution operation. Otherwise, the built-in function gives the full convolution whose length is equal to \(N+L-1\).
