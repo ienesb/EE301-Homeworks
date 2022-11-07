@@ -294,29 +294,16 @@ As we have shown in part a), the given discrete-time LTI system is analagous to 
      a_k =  cos(k\pi) \Rightarrow \end{math} is a real-valued and also an even function since consider that \begin{math} -1\leq cos(k\pi) \leq 1 \end{math} \ and \begin{math}\ cos(k\pi)\Big|_{k=1} = cos(k\pi)\Big|_{k=-1}\end{math} \\
     For \(x_3[n]\): \ 
     \begin{math}
-     a^{*}_k =  (jsin(\frac{k\pi}{2}))^{*} = -jsin(\frac{k\pi}{2})= jsin(\frac{-k\pi}{2}) = a_{-k} \end{math} \\ \\
-    Thus, \(x_2(t)\) and \(x_3[n]\) are real-valued signals.
+     a_k =  jsin(\frac{k\pi}{2}) \Rightarrow  \end{math} neither real-valued nor even function. \\ \\
+    Therefore, only the signal \(x_2(t)\) is even. 
       
     \subsection*{c)}
-    \subsubsection*{i.}
-    The systems are connected in parallel, so we can calculate 
-    the impulse response of the overall system \(h[n]\) as:\\
-    \begin{math}
-      h[n] = h_1[n] - h_2[n]\\
-      h[n] = u[n+2] - u[n-2]\\
-    \end{math}
-    \subsubsection*{ii.}
-    We can calculate the output signal of the overall system \(y[n]\)
-    for an arbitrary input signal \(x[n]\) as:\\
-    \begin{math}
-      y[n] = x[n-1] + x[n] + x[n+1] + x[n+2]
-    \end{math}\\
-    The system is neither memoryless nor causal since \(y[n]\)
-    depends future values of \(x[n]\).\\
-    For a bounded input signal, we can say that there exist \(M > 0\) 
-    such that \(\left\lvert x[n]\right\rvert \leq M \). Then \(\left\lvert y[n]\right\rvert  \leq 4M\) 
-    and \(y[n]\) is bounded, therefore the system is stable. 
-   
+    Bt the time-shifting property of Continuous Time Fourier Series: \\
+    \begin{math} x_2(t-5) = \displaystyle\sum_{k=-100}^{100} cos(k\pi) e^{-jk\frac{\pi}{5}}e^{jk\frac{2\pi}{50}t}  \quad \textrm{and, also note that} \quad cos(k\pi) = \frac{1}{2}(e^{jk\pi}+e^{-jk\pi}) \\
+    \Rightarrow x_2(t-5) = \displaystyle\sum_{k=-100}^{100} \frac{1}{2}(e^{jk\frac{4\pi}{5}}+e^{-jk\frac{6\pi}{5}}) e^{jk\frac{2\pi}{50}t} \end{math} \\
+    Thus, \(x_2(t-5)\) is another periodic signal with Fourier series coefficients \(b_k = \frac{1}{2}(e^{jk\frac{4\pi}{5}}+e^{-jk\frac{6\pi}{5}})\). \\   
+    Also, remember the theorem mentioned above, the signal \(x_2(t-5)\) is real if  \(b^{*}_k = b_{-k}\). \\   
+    \begin{math} b^{*}_k = (\frac{1}{2}(e^{jk\frac{4\pi}{5}}+e^{-jk\frac{6\pi}{5}}))^{*} = \frac{1}{2}(e^{-jk\frac{4\pi}{5}}+e^{jk\frac{6\pi}{5}}) = b_{-k} \Rightarrow \end{math} the signal \(x_2(t-5)\) is real. \\ 
     \section*{Question 5}
     \subsection*{a)}
 In calculating part of the question, we added zero vectors to end and beginning of the main vector to obtain correct results in range of \(0\leq n \leq N-1\), which can be seen in Appendix. Since we manually did that zero adding part, we deviated the result for \(n>N\) range. Because of this situation, our calculated result has only N value in range. On the other hand, MATLAB’s built-in function, \emph{conv()}, evaluate the convolution so that the size of the output is equal to \(N+L-1\). That's why the output graphs of convolution operation are different by using our function and MATLAB's built-in function as shown in Appendix. In fact, to get the same result that we got by using our function, one can specify an input argument, \emph{same}, to MATLAB's function so that the result gives the central part of the convolution operation. Otherwise, the built-in function gives the full convolution whose length is equal to \(N+L-1\).
