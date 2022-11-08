@@ -44,78 +44,53 @@
 
 
     \section*{Question 1}
-    \subsection*{System 1}
-    \textbf{1 - }The system is memoryless since the value of the output \(y(t)\) depends on
-    only the value of the input \(x(t)\) at present time instant.\\
-    \textbf{2 - }To determine the linearity of the system, apply the input \(\alpha x(t)\) and let the
-    output \(\hat{y}(t)=\alpha x(t)cos(2\pi f_0t)=\alpha y(t) \longrightarrow\) the system is linear.\\
-    \textbf{3 - }The system is causal since the output \(y(t)\) does not depend on the future
-    value of the input \(x(t)\).\\
-    \textbf{4 - }The system is time-variant. To see this, apply the input \(x(t-t_0)\) and let the
-    output \(\hat{y}(t)\) = \(x(t-t_0)cos(2\pi f_0t) \neq  y(t-t_0) = x(t-t_0)  cos(2\pi f_0(t-t_0))\).\\ 
-    \textbf{5 - }A system is said to be stable if any bounded input creates a bounded
-    output. Let \(x(t)\) be a bounded. That is, there exist \(M > 0\) such that \(\left\lvert x(t)\right\rvert \leq  M\).
-    Also, \(-1 \leq cos(2\pi f_0t) \leq 1\). Thus, \(\left\lvert y(t)\right\rvert  = \left\lvert x(t)cos(2\pi f_0t)\right\rvert  \leq \left\lvert x(t)\right\rvert \left\lvert cos(2\pi f_0t)\right\rvert  \leq M \longrightarrow \) so the system is stable. \\
-    \subsection*{System 2}
-    \textbf{1 - }The system is memoryless.\\
-    \textbf{2 - }The system is non-linear since if we apply the input \(\alpha x(t)\) then the output
-    becomes 
-    \(\hat{y}(t) = c_1\alpha x(t) + c_2(\alpha x(t))^2 = \alpha c_1x(t) + \alpha^2 c_2x^2(t) \neq \alpha y(t) = \alpha c_1x(t) + \alpha c_2x^2(t)\) \\
-    \textbf{3 - }The system is causal. \\
-    \textbf{4 - }The system is time-invariant consider that if we apply the input \(x(t-t_0)\) and
-    let the output \(\hat{y}(t)=c_1x(t-t_0) + c_2x^2(t-t_0) = y(t-t_0)\)\\
-    \textbf{5 - }Apply a bounded input \(x(t)\) such that \(\left\lvert x(t)\right\rvert \leq M\) then 
-    \(\left\lvert y(t)\right\rvert  = \left\lvert c_1x(t) + c_2x^2(t)\right\rvert \leq \left\lvert c_1\right\rvert \left\lvert x(t)\right\rvert  + \left\lvert c_2\right\rvert \left\lvert x^2(t)\right\rvert  \leq \left\lvert c_1\right\rvert M + \left\lvert c_2\right\rvert M^2 < \infty \longrightarrow\) the system is stable.\\
-
-    \subsection*{System 3}
-    \textbf{1 - }The system is memoryless. \\
-    \textbf{2 - }The system is non-linear. Apply the input \(\alpha x(t)\) and let the output \(\hat{y}(t)=\alpha x(t) + 4 \neq \alpha y(t) = \alpha x(t) + \alpha 4\)\\
-    \textbf{3 - }The system is causal. \\
-    \textbf{4 - }Apply the input \(x(t-t_0)\):\\
-    \(\hat{y}(t) = x(t-t_0) + 4 = y(t-t_0) \longrightarrow\) the system is time-invariant. \\
-    \textbf{5 - }Let \(x(t)\) be bounded input such that \(\left\lvert x(t)\right\rvert \leq M\). Then, 
-    \(\left\lvert y(t)\right\rvert = \left\lvert x(t) + 4\right\rvert \leq \left\lvert x(t)\right\rvert + 4 \leq M+4\) (which is a finite number). So, the system
-    is stable. \\
-    \subsection*{System 4}
-    \textbf{1 - }The system is not memoryless as it is not causal. \\
-    \textbf{2 - }The system is linear.\\
-    \textbf{3 - }For \(t < 0\), \(y(t)\) is calculated by future values of \(x(t)\), therefore, the 
-    system is not causal.\\
-    \textbf{4 - }Apply the input \(x(t-t_0)\):\\
-    \(\hat{y}(t) = x((t-t_0) / 3) = y(t-t_0) \longrightarrow \) the system is time-invariant.\\
-    \textbf{5 - }Let \(x(t)\) be bounded input such that \(\left\lvert x(t)\right\rvert \leq M\). Then, \(\left\lvert y(t)\right\rvert = \left\lvert x(t/3)\right\rvert \) (the expanded version of \(x(t)\)) \(\leq M \longrightarrow\) the system is stable.\\
-
-    \subsection*{System 5}
-    \textbf{1 - }The system has a memory since the value of the output \(y(t)\) depends on
-    the future values of the input \(x(t)\). \\
-    \textbf{2 - }The system is linear.\\
-    \textbf{3 - }The system is not causal because the output \(y(t)\) does not depend only on
-    present and past values of the input. \\
-    \textbf{4 - }Apply \(x(t-t_0)\):\\
-    \(\hat{y}(t) = tx(t-t_0+5) \neq y(t-t_0) = (t-t_0)x(t-t_0+5) \longrightarrow\) the system is time-variant. \\ 
-    \textbf{5 - }The system is not stable. To see this, consider the following example: \\
-    \(x(t) = u(t) \Rightarrow x(t+5) = u(t+5)\) also 
-    \(\left\lvert x(t+5)\right\rvert  = \left\lvert u(t+5)\right\rvert  \leq 1\) 
-    which means that the input is bounded. However, the output \(y(t) = tu(t+5)\) is not bounded. Therefore, the system is not stable.\\
-    \subsection*{System 6}
-    \(y(t) = u(x(t)) = \begin{cases}
-      1,& x(t) \geq 0\\
-      0,& x(t) < 0
-    \end{cases} \)\\
-    \textbf{1 - }The system is memoryless. \\
-    \textbf{2 - }The system is non-linear, apply \(\alpha x(t)\): \\
-    \(\hat{y}(t) = u(\alpha x(t))\) may not be equal to \(\alpha y(t) = \alpha u(x(t))\). 
-    For example, let the input \(x(t) = u(t)\) then for \(t \geq 0 \), the \(x(t) = 1\).
-    Also, choose \(\alpha = -1\). As a result, for \(t \geq 0 \): \(u(\alpha x(t)) = 0 \neq \alpha y(t) = \alpha u(x(t)) = -1\).\\ 
-    \textbf{3 - }The system is causal. \\
-    \textbf{4 - }Apply \(x(t-t_0)\):\\
-    \(\hat{y}(t) = u(x(t-t_0)) = y(t-t_0) \longrightarrow\) the system is time-invariant.\\
-    \textbf{5 - }Remember that \(\left\lvert u(t)\right\rvert  \leq 1\) so it is bounded. In this system, whatever the input \(x(t)\)  is, the output 
-    \(y(t) = u(x(t)) = \begin{cases}
-      1,& x(t) \geq 0\\
-      0,& x(t) < 0
-    \end{cases}\). Hence, the system is stable. \\ 
- 
+    \subsection*{a)}
+    Let \(x[n] = \delta[n]\). Then \(y[n] = h[n]\)\\
+    \begin{math}
+      h[n] - ah[n-1] = \delta[n] - b\delta[n-1]
+    \end{math}\\
+    We know that \(h[n] = 0\) for \(n < 0\) as the system is causal.\\
+    For \(n = 0\) we have\\
+    \begin{math}
+      h[0] - ah[-1] = \delta[0] - b\delta[-1]\\
+      h[0] = 1
+    \end{math}\\
+    For \(n = 1\), we have\\
+    \begin{math}
+      h[1] - ah[0] = \delta[1] - b\delta[0]\\
+      h[1] - a = -b\\
+      h[1] = a - b
+    \end{math}\\
+    For \(n = 2\), we have\\
+    \begin{math}
+      h[2] - ah[1] = \delta[2] - b\delta[1]\\
+      h[2] - a(a-b) = 0\\
+      h[2] = a(a-b)
+    \end{math}\\
+    For \(n = 3\), we have\\
+    \begin{math}
+      h[3] - ah[2] = \delta[3] - b\delta[2]\\
+      h[3] - a^2(a-b) = 0\\
+      h[2] = a^2(a-b)
+    \end{math}\\
+    In general, for \(n > 0\), we have \(h[n] = a^{n-1}(a-b)\).\\
+    \begin{math}
+      h[n] = \begin{cases}
+        a^{n-1}(a-b),& n>0 \\
+        1,& n=0\\
+        0,& n<0\\
+      \end{cases}
+    \end{math}\\
+    If the system is stable, then\\
+    \begin{math}
+      \sum_{k = -\infty}^{\infty}|h[k]| < \infty\\
+      1 + \sum_{k = 1}^{\infty}|a|^{k-1}|a-b| < \infty  \\
+      1 + |a-b|\sum_{k = 0}^{\infty}|a|^k < \infty\\
+    \end{math}
+    Therefore, \(-1< a < 1\) if the system is stable.
+    \subsection*{b)}
+    
+    
     \section*{Question 2}
     \subsection*{a)}
 	\(x(t)\) and \(h(t)\) can be written as: \\
