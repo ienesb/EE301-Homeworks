@@ -321,7 +321,13 @@ By differentiation property of Continuous Time Fourier Series: \\
 c^{*}_k = -jk\frac{2\pi}{50}cos(k\pi) \quad \textrm{and} \quad c_{-k} = j(-k)\frac{2\pi}{50}cos(-k\pi) = -jk\frac{2\pi}{50}cos(k\pi) \\ 
 c^{*}_k = c_{-k} \Rightarrow \frac{d}{dt}x_2(t) \textrm{is real-valued.} \end{math} \\ \\
 Note that, \(cos(k\pi)\) take only the values \(+1\) or \(-1\), so it is always real-valued. However, \(-jk\frac{2\pi}{50}\) is purely imaginary. Therefore, \(\frac{d}{dt}x_2(t)\) is not even.
-\subsection*{e)}
+\subsection*{e)} 
+\textbf{Parseval's Identity:}
+For any continuous-time periodic signal \(x(t)\) with the Fourier series coefficients \(a_k\), \\ 
+\begin{math} \frac{1}{T_0} \displaystyle\int_{t_0}^{t_0+T_0}x(t)x^{*}(t)dt = \displaystyle\sum_{k=-\infty}^{\infty}a_k a^{*}_k \Rightarrow \frac{1}{T_0} \displaystyle\int_{t_0}^{t_0+T_0}|x(t)|^{2} dt = \displaystyle\sum_{k=-\infty}^{\infty}|a_k |^{2} \end{math} \\ \\
+In this question, \(x_1(t)\) is a periodic signal whose fundamental period, \(T_0 = 50\) and its Fourier series coefficients \(a_k = (\frac{1}{2})^{-k}\). Please also note that, for this signal, the coefficients are defined only for \(0\leq k\leq100\) since outside this domain all of the coefficients are equal to 0. So, by using Parseval's identity, the average power of \(x_1(t)\) in one period: \\ 
+\begin{math} \frac{1}{50} \displaystyle\int_{0}^{50}|x_1(t)|^{2}dt = \displaystyle\sum_{k=0}^{100}|a_k|^{2} = \displaystyle\sum_{k=0}^{100}\left(\frac{1}{2}\right)^{-2k} = \displaystyle\sum_{k=0}^{100}4^{k} = 1+4^{1}+4^{2}+4^{3}+..........+4^{100} \end{math} 
+ 
     \section*{Question 5}
     \subsection*{a)}
 In calculating part of the question, we added zero vectors to end and beginning of the main vector to obtain correct results in range of \(0\leq n \leq N-1\), which can be seen in Appendix. Since we manually did that zero adding part, we deviated the result for \(n>N\) range. Because of this situation, our calculated result has only N value in range. On the other hand, MATLAB’s built-in function, \emph{conv()}, evaluate the convolution so that the size of the output is equal to \(N+L-1\). That's why the output graphs of convolution operation are different by using our function and MATLAB's built-in function as shown in Appendix. In fact, to get the same result that we got by using our function, one can specify an input argument, \emph{same}, to MATLAB's function so that the result gives the central part of the convolution operation. Otherwise, the built-in function gives the full convolution whose length is equal to \(N+L-1\).
