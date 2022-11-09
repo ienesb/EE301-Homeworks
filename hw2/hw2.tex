@@ -153,101 +153,14 @@
 				   	 
     \section*{Question 3}
     \subsection*{a)}
-    Recall that in continuous-time systems one can apply the derivative
-    operation to any arbitrary input signal. For example,\\
-    \begin{math}
-      \delta(t) = \frac{d}{dt}u(t)\longrightarrow \int_{-\infty }^{\infty }  \delta(t)\,dt 
-    \end{math}\\
-    Also, it can be applied by using the formal definition of the derivative:\\
-    \begin{math}
-      \lim_{h \to 0} \frac{x(t+h)-x(t)}{h} 
-    \end{math}\\
-    However, in discrete-time systems h cannot go to zero and the minimum
-    value for h can be one. So, in discrete time the derivative expression becomes\\
-    \begin{math}
-      \lim_{h \to 1} \frac{x(n+h)-x(n)}{h} = x[n+1]-x[n] 
-    \end{math}\\
-    Thus, the derivative operation in continuous-time systems is analogous of
-    the difference operation in discrete-time. Hence, we can obtain the impulse
-    response of the difference operation as: \(h[n] = \delta[n] - \delta[n-1]\)
+    
     \subsection*{b)}
-    By convolution, \(y[n] = x[n]*h[n] = x[n]*(\delta[n]-\delta[n-1])\)\\
-    By distributive property of the convolution operation,\\ 
-    \(x[n]*( \delta[n] – \delta[n-1]) = (x[n]* \delta[n]) – (x[n]* \delta[n-1])\)\\
-    \(y[n] = x[n] – x[n-1]\)
+
     \subsection*{c)}
-    \begin{math}
-      e^{j\Omega_0n}(1-e^{-j\Omega_0}) = (cos(\Omega_0n) +jsin(\Omega_0n))(1-e^{-j\Omega_0}) \\
-      =cos(\Omega_0n) + jsin(\Omega_0n) - (cos(\Omega_0n) + jsin(\Omega_0n))(cos(\Omega_0n) - jsin(\Omega_0n)) \\
-      =cos(\Omega_0n) + jsin(\Omega_0n) - cos(\Omega_0n)cos(\Omega_0) + jcos(\Omega_0n)sin(\Omega_0) - jsin(\Omega_0n)cos(\Omega_0) - sin(\Omega_0n)sin(\Omega_0) \\
-      =cos(\Omega_0n) + jsin(\Omega_0n) - (cos(\Omega_0n)cos(\Omega_0) + sin(\Omega_0n)sin(\Omega_0)) -j(sin(\Omega_0n)cos(\Omega_0) - cos(\Omega_0n)sin(\Omega_0)) \\
-      =cos(\Omega_0n) + jsin(\Omega_0n) - cos(\Omega_0n - \Omega_0) -jsin(\Omega_0n - \Omega_0) \\
-      =cos(\Omega_0n) - cos(\Omega_0(n-1)) + j(sin(\Omega_0n) - sin(\Omega_0(n-1))) \\ \\
-      \left\lvert y[n]\right\rvert = [(cos(\Omega_0n) - cos(\Omega_0(n-1)))^2+(sin(\Omega_0n) - sin(\Omega_0(n-1)))^2]^{1/2} \\ 
-      = [cos^2(\Omega_0n) - 2cos(\Omega_0n)cos(\Omega_o(n-1)) + cos^2(\Omega_0(n-1))  +  sin^2(\Omega_0n) - 2sin(\Omega_0n)sin(\Omega_o(n-1)) + sin^2(\Omega_0(n-1))]^{1/2} \\
-      = \sqrt{2 - 2[cos(\Omega_0n)cos(\Omega_0(n-1)) + sin(\Omega_0n)sin(\Omega_0(n-1))]} \\
-      = \sqrt{2-2cos(\Omega_0n-\Omega_0(n-1))} \\
-      = \sqrt{2-2cos(\Omega_0)} \\       
-    \end{math}
+  
     \subsection*{d)}
-    \begin{math}
-      \Omega_0 = 0 \longrightarrow \left\lvert y[n]\right\rvert = \sqrt{2-2cos(0)} = 0 \\
-      \Omega_0 = \frac{2\pi}{8} \longrightarrow \left\lvert y[n]\right\rvert = \sqrt{2-2cos(\frac{2\pi}{8})} = \sqrt{2-\sqrt{2}} \\
-      \Omega_0 = \frac{2\pi}{4} \longrightarrow \left\lvert y[n]\right\rvert = \sqrt{2-2cos(\frac{2\pi}{4})} = \sqrt{2} \\
-      \Omega_0 = \frac{2\pi}{2} \longrightarrow \left\lvert y[n]\right\rvert = \sqrt{2-2cos(\frac{2\pi}{2})} = 2 \\
-    \end{math} \\
-As we have shown in part a), the given discrete-time LTI system is analagous to the derivative operation in continuous-time systems. Also, please remember that the derivative is defined as the rate of change of a function with respect to a variable. Here, as the frequency of the input x[n] is increased, the period becomes smaller and the values of the input function are changed more rapidly. Therefore, the rate of change of a input function is increased as the frequency is increased, and the modulus of the output \(|y[n]|\) is getting larger values.
-    \subsection*{e)}
-    \(x[n] = u[n+5] - u[n-2]\) can be plotted as:\\
-    \begin{tikzpicture}
-        \begin{axis}[
-            axis lines=middle,
-            xlabel={$n$},
-            xlabel style={xshift=0.4cm},
-            ylabel={$x[n]$},
-            ylabel style={yshift=0.4cm},
-	    xmin=-7, xmax=4.5,
-            ymin=-1, ymax=1.2,
-            xticklabel style={
-              anchor=north,
-              inner sep=1pt,
-            }
-          ]
-         % \addplot [ycomb, black, thick, mark=*] table [x={n}, y={xn}] {data3ex.dat};
-        \end{axis}
-      \end{tikzpicture}\\
-    We can calculate \(y[n]\) for \(x[n] = u[n+5] - u[n-2]\) by using the answer in 
-    (b) as:\\
-    \begin{math}
-      y[n] = u[n+5] - u[n+2] - (u[n+4] + u[n-3]) 
-    \end{math}\\ 
-    \(y[n]\) can be plotted as:\\
-    \begin{tikzpicture}
-      \begin{axis}[
-          axis lines=middle,
-          xlabel={$n$},
-          xlabel style={xshift=0.4cm},
-	  ylabel={$y[n]$},
-          ylabel style={yshift=0.4cm},
-          xmin=-7, xmax=4.5,
-          ymin=-1, ymax=1.2,
-          xticklabel style={
-            anchor=north east,
-            inner sep=1pt,
-          }
-        ]
-        %\addplot [ycomb, black, thick, mark=*] table [x={n}, y={xn}] {data3ey.dat};
-      \end{axis}
-    \end{tikzpicture}\\
-    From the graph of \(y[n]\), we can say that \(x[n]\) has edges at \(n=-5\) 
-    and \(n=2\). 
-
-    \subsection*{f)}
-    From (d), we can say that magnitude of the output signal of the system 
-    increases as the frequency increases. In (f), \(x[n]\) has rapid changes at 
-    \(n=-5\) and \(n=2\), and as a result, \(y[n]\) has magnitude 1 at \(n=-5\) and 
-    \(n=2\), and 0 elsewhere.
-
+ 
+   
     \section*{Question 4}
     \subsection*{a)}
     Note that, any arbitrary periodic signal x(t) (or, x[n]) with Fourier series coefficients \(a_k\) is real-valued if  \(a^{*}_k = a_{-k}\). \\ \\
@@ -305,31 +218,10 @@ In this question, \(x_1(t)\) is a periodic signal whose fundamental period, \(T_
  
     \section*{Question 5}
     \subsection*{a)}
-In calculating part of the question, we added zero vectors to end and beginning of the main vector to obtain correct results in range of \(0\leq n \leq N-1\), which can be seen in Appendix. Since we manually did that zero adding part, we deviated the result for \(n>N\) range. Because of this situation, our calculated result has only N value in range. On the other hand, MATLAB’s built-in function, \emph{conv()}, evaluate the convolution so that the size of the output is equal to \(N+L-1\). That's why the output graphs of convolution operation are different by using our function and MATLAB's built-in function as shown in Appendix. In fact, to get the same result that we got by using our function, one can specify an input argument, \emph{same}, to MATLAB's function so that the result gives the central part of the convolution operation. Otherwise, the built-in function gives the full convolution whose length is equal to \(N+L-1\).
-\subsection*{b)}
-The output signal looks more smoother in larger values of L. As we can observe that h[n] impulse response created accordingly to L which directly affects the convolution range. By saying range, we mean that how many \(x*h\) multiplication we will use to calculate one element of the output. So, this is why that the output signal gain more elements and more precise values when L gets larger. And also, we can observe that the L value expands the output range by expanding h[n] size. The MATLAB code and the resulting graphs for different values of L can be seen in Appendix. 
+    \subsection*{b)}
+
 
     
 
 \end{document}
 
-
-
-%% TODO
-%
-% 1 yaz
-% 2 yaz
-% 3 yaz
-% 5 commentle ve yaz
-% örnek appendix kod ekle
-% plotları düzenle
-
-%% kontroller
-% 1 kontrol et
-% ...
-
-
-%% eksikler (gruba yazılacak)
-% 2 integraller yeniden hesaplanmalı
-% 2 comment yaz
-% 5 kodları iste
