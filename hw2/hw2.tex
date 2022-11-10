@@ -11,6 +11,7 @@
 \usepackage{float}
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usepackage{svg}
 % \usepackage[nocheck]{fancyhdr}
 
 \sloppy
@@ -140,7 +141,8 @@
      \frac{1}{2},& 0 < t < 1\\
      \frac{1}{2} - [(t-1) - \frac{(t-1)^{2}}{2}],& 1 < t < 2\\
      0,& t > 2
-    \end{cases}  \end{math} \\
+    \end{cases}  \end{math} \\ 
+
 
     \subsection*{b)} \begin{math}
     w(t) = h(t)*g(t) \\ 
@@ -153,7 +155,13 @@
 				   	 
     \section*{Question 3}
     \subsection*{a)}
-    
+    \begin{math} x(t) = \ \cdots + \delta(t+2)-2\delta(t+1) +\delta(t) - 2\delta(t-1)+\delta(t-2)-2\delta(t-3)+ \ \cdots  \\ 
+    \textrm{It is a perodic signal with fundamental period \(T_0 = 2\).} \\
+    a_k = \frac{1}{T_0} \displaystyle\int_{t_o}^{t_0+T_0}x(t) e^{-jk\omega_0t}dt = \frac{1}{2} \displaystyle\int_{\frac{-1}{2}}^{\frac{3}{2}}x(t) e^{-jk\pi t}dt\\ a_k =  \frac{1}{2} \underbrace{\displaystyle\int_{0^{-}}^{0^{+}}\delta(t) e^{-jk\pi t}dt}_{e^{-jk\pi(0)}} + \frac{1}{2} \underbrace{\displaystyle\int_{1^{-}}^{1^{+}}-2\delta(t-1) e^{-jk\pi t}dt}_{e^{-jk\pi(1)}} \quad \
+    \boxed{\textrm{Also, recall that } \displaystyle\int_{-\infty}^{\infty}\delta(t-t_0) x(t) = x(t_0) } \\ \\
+   \Rightarrow a_k = \frac{1}{2} - e^{-jk\pi} \\ 
+   \Rightarrow x(t) = \displaystyle\sum_{k=-\infty}^{\infty} a_k  e^{jk\omega_0 t} = \displaystyle\sum_{k=-\infty}^{\infty} \left(\frac{1}{2} - e^{-jk\pi}\right)  e^{jk\pi t}\\
+    \end{math}
     \subsection*{b)}
 
     \subsection*{c)}
