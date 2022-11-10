@@ -12,6 +12,8 @@
 \usepackage{tikz}
 \usepackage{pgfplots}
 \usepackage{svg}
+\usepackage{enumitem}
+\usepackage{xpatch}
 % \usepackage[nocheck]{fancyhdr}
 
 \sloppy
@@ -165,7 +167,13 @@
     \subsection*{b)}
 
     \subsection*{c)}
-  
+    \begin{math} x[n] = (-1)^{n} + j^{n} + cos(\frac{2\pi n}{3}) = e^{j\pi n }+ e^{j\frac{\pi}{2}n} + cos(\frac{2\pi n}{3}) \\ 
+    \textrm{Therefore,} \ x[n] \ \textrm{can be written as a summation of 3 distinct perodic signals: } \\
+    x[n] = \underbrace{e^{j\pi n }}_{x_1[n]}+ \underbrace{e^{j\frac{\pi}{2}n}}_{x_2[n]} + \underbrace{cos\left(\frac{2\pi n}{3}\right)}_{x_3[n]} = x_1[n] +x_2[n] +x_3[n] \end{math}\\ \\
+    \(x_1[n]\) \ is a periodic signal with fundamental period \(N_0 = 2\). \\   
+    \(x_2[n]\) \ is a periodic signal with fundamental period \(N_0 = 4\). \\
+    \(x_3[n]\) \ is a periodic signal with fundamental period \(N_0 = 3\). \\ 
+        
     \subsection*{d)}
  
    
