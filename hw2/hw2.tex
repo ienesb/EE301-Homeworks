@@ -172,11 +172,25 @@
     x[n] = \underbrace{e^{j\pi n }}_{x_1[n]}+ \underbrace{e^{j\frac{\pi}{2}n}}_{x_2[n]} + \underbrace{cos\left(\frac{2\pi n}{3}\right)}_{x_3[n]} = x_1[n] +x_2[n] +x_3[n] \end{math}\\ \\
     \(x_1[n]\) \ is a periodic signal with fundamental period \(N_0 = 2\). \\   
     \(x_2[n]\) \ is a periodic signal with fundamental period \(N_0 = 4\). \\
-    \(x_3[n]\) \ is a periodic signal with fundamental period \(N_0 = 3\). \\ 
-        
+    \(x_3[n]\) \ is a periodic signal with fundamental period \(N_0 = 3\). \\ \\
+    Then, the fundamental period of \(x[n]\) is the least common multiple of the fundamental periods of these three signals, so \(N_0 = 12\). \\
+    \begin{math} a_k = \frac{1}{T_0} \displaystyle\sum_{n=n_0}^{n_0+N_0-1}x[n] e^{-jk\frac{2\pi}{N_0}n} = \frac{1}{12} \displaystyle\sum_{n=-6}^{5}x[n] e^{-jk\frac{\pi}{6}n} \end{math}
     \subsection*{d)}
- 
-   
+     \(x(t)\) is periodic signal with fundamental period \(T_0 = 1\). \\
+     \begin{math} a_k = \frac{1}{T_0} \displaystyle\int_{t_o}^{t_0+T_0}x(t) e^{-jk\omega_0t}dt = \displaystyle\int_{\frac{-1}{2}}^{\frac{1}{2}}e^{-t} e^{-jk2\pi t}dt = \displaystyle\int_{\frac{-1}{2}}^{\frac{1}{2}}e^{-t(1+jk2\pi)}dt \\ \\
+\ = \frac{-1}{1+jk2\pi} \left[e^{\frac{-1}{2}}\underbrace{e^{-jk\pi}}_{cos(k\pi)}-e^{\frac{1}{2}}\underbrace{e^{jk\pi}}_{cos(k\pi)}\right] = \frac{cos(k\pi)}{1+jk2\pi} \left(e^{\frac{1}{2}}-e^{\frac{-1}{2}}\right) \\ \\
+\Rightarrow x(t) = \displaystyle\sum_{k=-\infty}^{\infty} \frac{cos(k\pi)}{1+jk2\pi} \left(e^{\frac{1}{2}}-e^{\frac{-1}{2}}\right)  e^{jk2\pi t} \end{math}  
+    \subsection*{e)}
+    \begin{math}
+    \textrm{Recall that:} \quad \boxed{y(t) = h(t)*x(t)} \quad \boxed{x(t)*\delta(t) = x(t)} \quad \boxed{x(t)*\delta(t-t_0) = x(t-t_0)} \\
+    \Rightarrow y(t) = x(t)*(\delta(t) - \delta(t-\frac{1}{2})) \stackrel{\text{(by distribution property)}}{=} x(t)*\delta(t) - x(t)*\delta(t-\frac{1}{2}) \\  
+    \Rightarrow y(t) = x(t) - x(t-\frac{1}{2}) \\ 
+    = \displaystyle\sum_{k=-\infty}^{\infty} \frac{cos(k\pi)}{1+jk2\pi} \left(e^{\frac{1}{2}}-e^{\frac{-1}{2}}\right)  e^{jk2\pi t} - \displaystyle\sum_{k=-\infty}^{\infty} \frac{cos(k\pi)}{1+jk2\pi} \left(e^{\frac{1}{2}}-e^{\frac{-1}{2}}\right)  e^{jk2\pi (t-\frac{1}{2})} \\
+    = \displaystyle\sum_{k=-\infty}^{\infty} \frac{cos(k\pi)}{1+jk2\pi} \left(e^{\frac{1}{2}}-e^{\frac{-1}{2}}\right)  e^{jk2\pi t} - \displaystyle\sum_{k=-\infty}^{\infty} \frac{cos(k\pi)}{1+jk2\pi} \left(e^{\frac{1}{2}}-e^{\frac{-1}{2}}\right)  e^{jk2\pi t} \underbrace{e^{-jk\pi}}_{cos(k\pi)} \\
+= \displaystyle\sum_{k=-\infty}^{\infty} \frac{cos(k\pi)}{1+jk2\pi} \left(e^{\frac{1}{2}}-e^{\frac{-1}{2}}\right)  e^{jk2\pi t} \left(1-cos(k\pi)\right) \\
+= \displaystyle\sum_{k=-\infty}^{\infty} \frac{cos(k\pi) - \overbrace{cos(k\pi)^{2}}^{1}}{1+jk2\pi} \left(e^{\frac{1}{2}}-e^{\frac{-1}{2}}\right) e^{jk2\pi t} \\
+y(t) = \displaystyle\sum_{k=-\infty}^{\infty} \frac{cos(k\pi)-1}{1+jk2\pi} \left(e^{\frac{1}{2}}-e^{\frac{-1}{2}}\right)  e^{jk2\pi t}
+\end{math}
     \section*{Question 4}
     \subsection*{a)}
     Note that, any arbitrary periodic signal x(t) (or, x[n]) with Fourier series coefficients \(a_k\) is real-valued if  \(a^{*}_k = a_{-k}\). \\ \\
