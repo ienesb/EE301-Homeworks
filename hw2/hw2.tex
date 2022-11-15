@@ -165,7 +165,16 @@
    \Rightarrow x(t) = \displaystyle\sum_{k=-\infty}^{\infty} a_k  e^{jk\omega_0 t} = \displaystyle\sum_{k=-\infty}^{\infty} \left(\frac{1}{2} - e^{-jk\pi}\right)  e^{jk\pi t}\\
     \end{math}
     \subsection*{b)}
-
+    \(x(t)\) is a perodic signal with fundamental period, \(T_0 = 4\). \\
+    \begin{math}  
+    a_k = \frac{1}{4} \displaystyle\int_{-2}^{2} x(t) e^{-jk\omega_0 t} dt = \frac{1}{4} \displaystyle\int_{0}^{1} cos(\frac{\pi t}{2}) e^{-jk\frac{\pi}{2} t} dt \\ \\
+         a_k =  \frac{1}{4} \displaystyle\int_{0}^{1} \frac{1}{2} \left(e^{j\frac{\pi}{2}t} + e^{-j\frac{\pi}{2}t}\right) e^{-jk\frac{\pi}{2} t} dt = \frac{1}{8} \displaystyle\int_{0}^{1} \left(e^{-j\frac{\pi}{2}(k-1)t} + e^{-j\frac{\pi}{2}(k+1)t}\right) dt \\ \\
+     a_k = - \frac{1}{8}  \left(\frac{e^{-j\frac{\pi}{2}(k-1)t}}{j(k-1)\frac{\pi}{2}}  \displaystyle\Big|_{0}^{1} + \frac{e^{-j\frac{\pi}{2}(k+1)t}}{j(k+1)\frac{\pi}{2}}  \displaystyle\Big|_{0}^{1}\right) = \frac{1}{8} \left[\frac{1-e^{-j\frac{\pi}{2}(k-1)}}{j(k-1)\frac{\pi}{2}}\right] + \frac{1}{8} \left[\frac{1-e^{-j\frac{\pi}{2}(k+1)}}{j(k+1)\frac{\pi}{2}}\right] \\ \\
+    a_k = \frac{1}{8} \left[\frac{1-e^{-j\frac{\pi}{2}k}e^{j\frac{\pi}{2}}}{j(k-1)\frac{\pi}{2}}\right] + \frac{1}{8} \left[\frac{1-e^{-j\frac{\pi}{2}k}e^{-j\frac{\pi}{2}}}{j(k+1)\frac{\pi}{2}}\right] \\ \\ 
+ a_k = \frac{1}{8} \left[\frac{1-je^{-j\frac{\pi}{2}k}}{j(k-1)\frac{\pi}{2}}\right] + \frac{1}{8} \left[\frac{1+je^{-j\frac{\pi}{2}k}}{j(k+1)\frac{\pi}{2}}\right] = \frac{1}{4} \left[\frac{k-je^{-j\frac{\pi}{2}k}}{j(k^{2} -1)\frac{\pi}{2}}\right] = -\frac{1}{4} \left[\frac{e^{-j\frac{\pi}{2}k}+jk}{(k^{2} -1)\frac{\pi}{2}}\right]   \\ \\ 
+   \Rightarrow x(t) = \displaystyle\sum_{k=-\infty}^{\infty} a_k  e^{jk\omega_0 t} = \displaystyle\sum_{k=-\infty}^{\infty} -\frac{1}{4}\left(\frac{e^{-j\frac{\pi}{2}k}+jk}{(k^{2} -1)\frac{\pi}{2}}\right) e^{jk\frac{\pi}{2} t}
+    \end{math}
+    
     \subsection*{c)}
     \begin{math} x[n] = (-1)^{n} + j^{n} + cos(\frac{2\pi n}{3}) = e^{j\pi n }+ e^{j\frac{\pi}{2}n} + cos(\frac{2\pi n}{3}) \\ 
     \textrm{Therefore,} \ x[n] \ \textrm{can be written as a summation of 3 distinct perodic signals: } \\
