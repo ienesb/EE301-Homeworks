@@ -96,6 +96,8 @@
     \begin{math} y[n] = h[n]*x[n]  \quad \textrm{and} \quad x[n] = e^{j\Omega_1 n} + e^{j\Omega_2 n} \\
     \textrm{By distribution property of the convolution over addition:}\\
     y[n] = h[n] * e^{j\Omega_1 n} + h[n] * e^{j\Omega_2 n} = \displaystyle\sum_{k=-\infty}^{\infty} h[k] e^{j\Omega_1 (n-k)} + \displaystyle\sum_{k=-\infty}^{\infty} h[k] e^{j\Omega_2 (n-k)}  \\ 
+    y[n] = e^{j\Omega_1 n} + \displaystyle\sum_{k=1}^{\infty} a^{k} \frac{(a^2 -1)}{a^2} e^{j\Omega_1 (n-k)} + e^{j\Omega_2 n} + \displaystyle\sum_{k=1}^{\infty} a^{k} \frac{(a^2 -1)}{a^2} e^{j\Omega_2 (n-k)} \\ 
+    y[n] = e^{j\Omega_1 n} + e^{j\Omega_2 n} + \frac{(a^2 -1)}{a^2} e^{j\Omega_1 n} \displaystyle\sum_{k=1}^{\infty} a^{k} e^{-j\Omega_1 k}+ \frac{(a^2 -1)}{a^2} e^{j\Omega_2 n} \displaystyle\sum_{k=1}^{\infty} a^{k} e^{-j\Omega_2 k} 
     \end{math} 
     
     \section*{Question 2}
