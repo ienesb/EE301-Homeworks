@@ -204,9 +204,9 @@
     \begin{math} a_k = \frac{1}{T_0} \displaystyle\sum_{n=n_0}^{n_0+N_0-1}x[n] e^{-jk\frac{2\pi}{N_0}n} = \frac{1}{12} \displaystyle\sum_{n=-6}^{5}x[n] e^{-jk\frac{\pi}{6}n} \end{math}
     \subsection*{d)}
      \(x(t)\) is periodic signal with fundamental period \(T_0 = 1\). \\
-     \begin{math} a_k = \frac{1}{T_0} \displaystyle\int_{t_o}^{t_0+T_0}x(t) e^{-jk\omega_0t}dt = \displaystyle\int_{\frac{-1}{2}}^{\frac{1}{2}}e^{-t} e^{-jk2\pi t}dt = \displaystyle\int_{\frac{-1}{2}}^{\frac{1}{2}}e^{-t(1+jk2\pi)}dt \\ \\
-\ = \frac{-1}{1+jk2\pi} \left[e^{\frac{-1}{2}}\underbrace{e^{-jk\pi}}_{cos(k\pi)}-e^{\frac{1}{2}}\underbrace{e^{jk\pi}}_{cos(k\pi)}\right] = \frac{cos(k\pi)}{1+jk2\pi} \left(e^{\frac{1}{2}}-e^{\frac{-1}{2}}\right) \\ \\
-\Rightarrow x(t) = \displaystyle\sum_{k=-\infty}^{\infty} \frac{cos(k\pi)}{1+jk2\pi} \left(e^{\frac{1}{2}}-e^{\frac{-1}{2}}\right)  e^{jk2\pi t} \end{math}  
+     \begin{math} a_k = \frac{1}{T_0} \displaystyle\int_{t_o}^{t_0+T_0}x(t) e^{-jk\omega_0t}dt = \displaystyle\int_{0}^{1}e^{-t} e^{-jk2\pi t}dt = \displaystyle\int_{0}^{1}e^{-t(1+jk2\pi)}dt \\ \\
+\ = \frac{-1}{1+jk2\pi} \left[e^{-1}\underbrace{e^{-jk2\pi}}_{cos(2k\pi)}-1\right] = \frac{1}{1+jk2\pi} \left(1-e^{-1}\right) \\ \\
+\Rightarrow x(t) = \displaystyle\sum_{k=-\infty}^{\infty} \frac{1}{1+jk2\pi} \left(1-e^{-1}\right)  e^{jk2\pi t} \end{math}  
     \subsection*{e)}
     \begin{math}
     \textrm{Recall that:} \quad \boxed{y(t) = h(t)*x(t)} \quad \boxed{x(t)*\delta(t) = x(t)} \quad \boxed{x(t)*\delta(t-t_0) = x(t-t_0)} \\
