@@ -1,19 +1,19 @@
 \documentclass[12pt]{article}
 \usepackage[utf8]{inputenc, }
 \usepackage{graphicx}
-\usepackage{svg}
 \usepackage{hyperref}
 \usepackage[margin=1in]{geometry}
 \usepackage{setspace}
 \usepackage{color}
 \usepackage{pdfpages}
 \usepackage{amsmath}
+\usepackage{amsfonts}
 \usepackage{float}
 \usepackage{tikz}
 \usepackage{pgfplots}
-\usepackage{svg}
 \usepackage{enumitem}
 \usepackage{xpatch}
+\usepackage{svg}
 % \usepackage[nocheck]{fancyhdr}
 
 \sloppy
@@ -48,34 +48,34 @@
 
     \section*{Question 1}
     \subsection*{a)}
-    Let \(x[n] = \delta[n]\). Then \(y[n] = h[n]\)\\
+    Let \(x[n] = \delta[n]\). Then \(y[n] = h[n]\) and equation becomes:\\
     \begin{math}
       h[n] - ah[n-1] = \delta[n] - b\delta[n-1]
     \end{math}\\
-    We know that \(h[n] = 0\) for \(n < 0\) as the system is causal.\\
-    For \(n = 0\) we have\\
+    Also, we know that \(h[n] = 0\) for \(n < 0\) since the system is said to be causal.\\ \\
+    For \(n = 0\), we have:\\
     \begin{math}
       h[0] - ah[-1] = \delta[0] - b\delta[-1]\\
       h[0] = 1
-    \end{math}\\
-    For \(n = 1\), we have\\
+    \end{math}\\ \\
+    For \(n = 1\), we have:\\
     \begin{math}
       h[1] - ah[0] = \delta[1] - b\delta[0]\\
       h[1] - a = -b\\
       h[1] = a - b
-    \end{math}\\
-    For \(n = 2\), we have\\
+    \end{math}\\ \\
+    For \(n = 2\), we have:\\
     \begin{math}
       h[2] - ah[1] = \delta[2] - b\delta[1]\\
       h[2] - a(a-b) = 0\\
       h[2] = a(a-b)
-    \end{math}\\
-    For \(n = 3\), we have\\
+    \end{math}\\ \\
+    For \(n = 3\), we have:\\
     \begin{math}
       h[3] - ah[2] = \delta[3] - b\delta[2]\\
       h[3] - a^2(a-b) = 0\\
-      h[2] = a^2(a-b)
-    \end{math}\\
+      h[3] = a^2(a-b)
+    \end{math}\\ \\
     In general, for \(n > 0\), we have \(h[n] = a^{n-1}(a-b)\).\\
     \begin{math}
       h[n] = \begin{cases}
@@ -83,14 +83,15 @@
         1,& n=0\\
         0,& n<0\\
       \end{cases}
-    \end{math}\\
-    If the system is stable, then\\
+    \end{math}\\ \\
+    If the system is stable, then the following expressions must be satisfied: \\
     \begin{math}
-      \sum_{k = -\infty}^{\infty}|h[k]| < \infty\\
-      1 + \sum_{k = 1}^{\infty}|a|^{k-1}|a-b| < \infty  \\
-      1 + |a-b|\sum_{k = 0}^{\infty}|a|^k < \infty\\
+      \displaystyle\sum_{k = -\infty}^{\infty}|h[k]| < \infty \Longleftrightarrow 1 + \displaystyle\sum_{k = 1}^{\infty}|a|^{k-1}|a-b| < \infty \Longleftrightarrow 1 + |a-b|\displaystyle\sum_{k = 0}^{\infty}|a|^k < \infty\\ \\ 
     \end{math}
-    Therefore, \(-1< a < 1\) if the system is stable.
+    Therefore, the system is said to be stable \begin{math} \Longleftrightarrow \begin{cases}
+        a \in \mathbb{R},& \textrm{if }a=b \\
+        -1<a<1,& \textrm{otherwise}\\
+      \end{cases} \end{math}
     \subsection*{b)}
     
     
@@ -146,7 +147,6 @@
     \end{cases}  \end{math} \\ 
     Also, \(y(t)\) can be written as: \\ \\
     \begin{math} y(t) = (\frac{1-t^2}{2})\cdot u(t+1) + (\frac{t^{2}}{2})\cdot u(t) - (\frac{t^2-4t+3}{2})\cdot u(t-1) + (\frac{t^2-4t+2}{2})\cdot u(t-2)\end{math} 
-
 
     \subsection*{b)} \begin{math}
     w(t) = h(t)*g(t) \\ 
