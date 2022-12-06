@@ -101,7 +101,7 @@
     y[n] = e^{j\Omega_1 n} + \frac{(a^2 -1)}{a^2} e^{j\Omega_1 n} \displaystyle\sum_{k=1}^{\infty} a^{k} e^{-j\Omega_1 k}+ e^{j\Omega_2 n} + \frac{(a^2 -1)}{a^2} e^{j\Omega_2 n} \displaystyle\sum_{k=1}^{\infty} a^{k} e^{-j\Omega_2 k} \\
     y[n] = e^{j\Omega_1 n} + \frac{(a^2 -1)}{a^2} e^{j\Omega_1 n} \displaystyle\sum_{k=1}^{\infty} (ae^{-j\Omega_1 })^k + e^{j\Omega_2 n} + \frac{(a^2 -1)}{a^2} e^{j\Omega_2 n} \displaystyle\sum_{k=1}^{\infty} (ae^{-j\Omega_2 })^k \\
     \end{math} 
-    We know that \(-1\leq a \leq 1\) if \(a=b\) for a stable system. Then we have \(|ae^{-j\Omega}| \leq 1\) for any \(\Omega\).\\
+    We know that \(-1\leq a \leq 1\) if \(a=b\) for a stable system. Then we have \(|ae^{-j\Omega}| \leq 1\) for any \(\Omega\).\\ \\
     \begin{math}
       y[n] = e^{j\Omega_1 n} + \frac{(a^2 -1)}{a^2} e^{j\Omega_1 n} \frac{ae^{-j\Omega_1}}{1-ae^{-j\Omega_1}} + e^{j\Omega_2 n} + \frac{(a^2 -1)}{a^2} e^{j\Omega_2 n} \frac{ae^{-j\Omega_2}}{1-ae^{-j\Omega_2}} \\
     \end{math} 
@@ -204,9 +204,9 @@
     \begin{math} a_k = \frac{1}{T_0} \displaystyle\sum_{n=n_0}^{n_0+N_0-1}x[n] e^{-jk\frac{2\pi}{N_0}n} = \frac{1}{12} \displaystyle\sum_{n=-6}^{5}x[n] e^{-jk\frac{\pi}{6}n} \end{math}
     \subsection*{d)}
      \(x(t)\) is periodic signal with fundamental period \(T_0 = 1\). \\
-     \begin{math} a_k = \frac{1}{T_0} \displaystyle\int_{t_o}^{t_0+T_0}x(t) e^{-jk\omega_0t}dt = \displaystyle\int_{\frac{-1}{2}}^{\frac{1}{2}}e^{-t} e^{-jk2\pi t}dt = \displaystyle\int_{\frac{-1}{2}}^{\frac{1}{2}}e^{-t(1+jk2\pi)}dt \\ \\
-\ = \frac{-1}{1+jk2\pi} \left[e^{\frac{-1}{2}}\underbrace{e^{-jk\pi}}_{cos(k\pi)}-e^{\frac{1}{2}}\underbrace{e^{jk\pi}}_{cos(k\pi)}\right] = \frac{cos(k\pi)}{1+jk2\pi} \left(e^{\frac{1}{2}}-e^{\frac{-1}{2}}\right) \\ \\
-\Rightarrow x(t) = \displaystyle\sum_{k=-\infty}^{\infty} \frac{cos(k\pi)}{1+jk2\pi} \left(e^{\frac{1}{2}}-e^{\frac{-1}{2}}\right)  e^{jk2\pi t} \end{math}  
+     \begin{math} a_k = \frac{1}{T_0} \displaystyle\int_{t_o}^{t_0+T_0}x(t) e^{-jk\omega_0t}dt = \displaystyle\int_{0}^{1}e^{-t} e^{-jk2\pi t}dt = \displaystyle\int_{0}^{1}e^{-t(1+jk2\pi)}dt \\ \\
+\ = \frac{-1}{1+jk2\pi} \left[e^{-1}\underbrace{e^{-jk2\pi}}_{cos(2k\pi)}-1\right] = \frac{1}{1+jk2\pi} \left(1-e^{-1}\right) \\ \\
+\Rightarrow x(t) = \displaystyle\sum_{k=-\infty}^{\infty} \frac{1}{1+jk2\pi} \left(1-e^{-1}\right)  e^{jk2\pi t} \end{math}  
     \subsection*{e)}
     \begin{math}
     \textrm{Recall that:} \quad \boxed{y(t) = h(t)*x(t)} \quad \boxed{x(t)*\delta(t) = x(t)} \quad \boxed{x(t)*\delta(t-t_0) = x(t-t_0)} \\
@@ -273,12 +273,7 @@ For any continuous-time periodic signal \(x(t)\) with the Fourier series coeffic
 In this question, \(x_1(t)\) is a periodic signal whose fundamental period, \(T_0 = 50\) and its Fourier series coefficients \(a_k = (\frac{1}{2})^{-k}\). Please also note that, for this signal, the coefficients are defined only for \(0\leq k\leq100\) since outside this domain all of the coefficients are equal to 0. So, by using Parseval's identity, the average power of \(x_1(t)\) in one period: \\ 
 \begin{math} \frac{1}{50} \displaystyle\int_{0}^{50}|x_1(t)|^{2}dt = \displaystyle\sum_{k=0}^{100}|a_k|^{2} = \displaystyle\sum_{k=0}^{100}\left(\frac{1}{2}\right)^{-2k} = \displaystyle\sum_{k=0}^{100}4^{k} = 1+4^{1}+4^{2}+4^{3}+..........+4^{100} \end{math} 
  
-    \section*{Question 5}
-    \subsection*{a)}
-    \subsection*{b)}
-
-
-    
+ 
 
 \end{document}
 
