@@ -14,6 +14,7 @@
 \usepackage{enumitem}
 \usepackage{xpatch}
 \usepackage{svg}
+\usepackage{mathrsfs}
 % \usepackage[nocheck]{fancyhdr}
 
 \sloppy
@@ -41,7 +42,7 @@
 % \renewcommand{\headrulewidth}{0pt}
 \begin{document}
 
-% \maketitle
+\maketitle
 % \tableofcontents
 % \newpage
 
@@ -57,6 +58,38 @@
     \subsection*{b)}
     \section*{Question 4}
     \subsection*{a)}
+    \subsubsection*{i)}
+    \begin{math} 
+    X(e^{j\Omega}) = \displaystyle\sum_{n=-\infty}^{\infty} \underbrace{\delta[n] e^{-j\Omega n}}_{\delta[n] e^{-j\Omega 0}} = \displaystyle\sum_{n=-\infty}^{\infty} \delta[n] = 1 
+    \end{math} 
+     \subsubsection*{ii)}
+    \begin{math} 
+    X(e^{j\Omega}) = \displaystyle\sum_{n=-\infty}^{\infty} (2\delta[n-3] - \delta[n-10] ) e^{-j\Omega n} \stackrel{\text{(by linearity)}}{=} 2\displaystyle\sum_{n=-\infty}^{\infty} \delta[n-3] e^{-j\Omega n} - \displaystyle\sum_{n=-\infty}^{\infty} \delta[n-10] e^{-j\Omega n} \\ \\
+    \textrm{By time-shifting property of DTFT: } \\ 
+    X(e^{j\Omega}) = 2e^{-j3\Omega} - e^{-j10\Omega} 
+    \end{math} 
+      \subsubsection*{iii)}
+    \begin{math} 
+    X(e^{j\Omega}) = \displaystyle\sum_{n=-\infty}^{\infty} x[n] e^{-j\Omega n} = \displaystyle\sum_{n=1}^{4} \frac{1}{n^{2}} e^{-j\Omega n} = e^{-j\Omega} + \frac{1}{4} e^{-j2\Omega} +\frac{1}{9} e^{-j3\Omega} + \frac{1}{16} e^{-j4\Omega}
+    \end{math} 
+     \subsubsection*{iv)}
+    \begin{math}
+    X(e^{j\Omega}) = \displaystyle\sum_{n=-\infty}^{\infty} \left(\left(\frac{1}{2}\right)^{n} u[n] - 3^{n} u[-n-1]\right)  e^{-j\Omega n} \\ 
+    \stackrel{\text{(by linearity)}}{=}  \displaystyle\sum_{n=-\infty}^{\infty} \left(\frac{1}{2}\right)^{n} u[n] e^{-j\Omega n} - \displaystyle\sum_{n=-\infty}^{\infty} 3^{n} u[-n-1] e^{-j\Omega n} = \displaystyle\sum_{n=0}^{\infty} \left(\frac{1}{2} e^{-j\Omega}\right)^{n} - \displaystyle\sum_{n=-\infty}^{-1} 3^{n} e^{-j\Omega n} \\
+    \displaystyle\sum_{n=0}^{\infty} \left(\frac{1}{2} e^{-j\Omega}\right)^{n} = \frac{1}{1- \frac{1}{2} e^{-j\Omega}} \quad \left(\textrm{since } \left\vert\frac{1}{2} e^{-j\Omega}\right\vert = \frac{1}{2} < 1, \textrm{so the expression is convergent}\right) \\ 
+    \textrm{Let } m = -n: \displaystyle\sum_{n=-\infty}^{-1} 3^{n} e^{-j\Omega n} = \displaystyle\sum_{m=1}^{\infty} 3^{-m} e^{j\Omega m} = \displaystyle\sum_{m=1}^{\infty} \left(\frac{1}{3} e^{j\Omega}\right)^{m} = \underbrace{\left[\displaystyle\sum_{m=0}^{\infty} \left(\frac{1}{3} e^{j\Omega}\right)^{m}\right]}_{\frac{1}{1- \frac{1}{3} e^{j\Omega}}} -1 \\
+    \Rightarrow X(e^{j\Omega}) = \frac{1}{1- \frac{1}{2} e^{-j\Omega}} - \left(\frac{1}{1- \frac{1}{3} e^{j\Omega}} -1\right)
+    \end{math} 
+    \subsubsection*{v)}
+    Say that,  \begin{math} 
+    \hat x[n] = \left(\frac{1}{2}\right)^{n} u[n] - 3^{n} u[-n-1]  \textrm{ and } \mathscr{F}\{\hat x[n]\}= \hat X(e^{j\Omega}) =  \frac{1}{1- \frac{1}{2} e^{-j\Omega}} - \left(\frac{1}{1- \frac{1}{3} e^{j\Omega}} -1\right)
+    \end{math} \\ 
+    By time-shifting property of DTFT: \\ 
+    \begin{math} 
+    x[n] = \hat x[n-7] \longleftrightarrow X(e^{j\Omega}) = \hat X(e^{j\Omega}) e^{-j7\Omega}  \\ \\
+    \Rightarrow X(e^{j\Omega}) = \frac{e^{-j7\Omega}}{1- \frac{1}{2} e^{-j\Omega}} - \left(\frac{e^{-j7\Omega}}{1- \frac{1}{3} e^{j\Omega}} -e^{-j7\Omega}\right)
+    \end{math} 
+    \subsubsection*{vi)}
     \subsection*{b)}
     \section*{Question 5}
     \subsection*{a)}
