@@ -55,7 +55,43 @@
     \subsection*{c)}
     \section*{Question 3}
     \subsection*{a)}
+    \subsubsection*{i)}
+    \begin{math}
+    x(t) = \frac{sin(4\pi t)}{\pi t} cos(2\pi t) = \frac{4sin(4\pi t)}{4\pi t} cos(2\pi t) = x_1(t)x_2(t) \left(\textrm{ where }x_1(t) = \frac{4sin(4\pi t)}{4\pi t} \textrm{, } x_2(t) = cos(2\pi t)\right)\\ \\ 
+    \textrm{Recall that: } \mathscr{F}\{rect(\theta)\} = \frac{sin(\omega/2)}{\omega/2} \\
+    \textrm{By duality property of CTFT: }\frac{sin(t/2)}{t/2} \longleftrightarrow 2\pi rect(-\omega) = 2\pi rect(\omega) \\
+    \textrm{By scaling property of CTFT: }\frac{sin(4\pi t)}{4\pi t} \longleftrightarrow \frac{rect(\frac{\omega}{8\pi})}{4} \\
+    \textrm{By linearity: } \frac{4sin(4\pi t)}{4\pi t} \longleftrightarrow rect(\frac{\omega}{8\pi}) = X_1(j\omega) \\ \\
+    x_2(t) = cos(2\pi t) = \frac{1}{2} e^{j2\pi t} + \frac{1}{2} e^{-j2\pi t} \\
+    \mathscr{F}\{\frac{1}{2} e^{j2\pi t} + \frac{1}{2} e^{-j2\pi t}\} \longleftrightarrow \pi [\delta(\omega+2\pi) + \delta(\omega-2\pi)] = X_2(j\omega) \\ \\
+    \textrm{By modulation property of CTFT: } \\
+    x(t) = x_1(t) x_2(t) \longleftrightarrow X(j\omega) = \frac{1}{2\pi} X_1(j\omega)*X_2(j\omega) \\
+    X(j\omega) = \frac{1}{2\pi} rect(\frac{\omega}{8\pi})*\pi [\delta(\omega+2\pi) + \delta(\omega-2\pi)] = \frac{1}{2} [rect(\frac{\omega}{8\pi})*\delta(\omega+2\pi) + rect(\frac{\omega}{8\pi})*\delta(\omega-2\pi)] \\
+    X(j\omega) = \frac{1}{2} rect(\frac{\omega+2\pi}{8\pi}) + \frac{1}{2} rect(\frac{\omega-2\pi}{8\pi}) 
+    \end{math}
+    \subsubsection*{ii)}
+    \begin{math}
+    y(t) = h(t)*x(t) \\
+    \textrm{By convolution property of CTFT: } y(t) = h(t) * x(t) \longleftrightarrow Y(j\omega) = H(j\omega)X(j\omega)\\
+    Y(j\omega) = \left(1-rect(\frac{\omega}{4\pi})\right)  \left(\frac{1}{2} rect(\frac{\omega-2\pi}{8\pi}) + \frac{1}{2} rect(\frac{\omega+2\pi}{8\pi})\right) \\
+    Y(j\omega) = \frac{1}{2} rect(\frac{\omega-2\pi}{8\pi}) + \frac{1}{2} rect(\frac{\omega+2\pi}{8\pi}) - \frac{1}{2} \left(rect(\frac{\omega}{4\pi}) rect(\frac{\omega-2\pi}{8\pi})+ rect(\frac{\omega}{4\pi}) rect(\frac{\omega+2\pi}{8\pi})\right) \\
+    Y(j\omega) = rect(\frac{\omega+4\pi}{4\pi}) + rect(\frac{\omega-4\pi}{4\pi})
+    \end{math}
     \subsection*{b)}
+    \subsubsection*{i)}
+    By modulation property of CTFT: \\
+    \begin{math}
+    z(t) \longleftrightarrow Z(j\omega) = \frac{1}{2\pi} Y(j\omega) * \mathscr{F}\{\frac{sin(2\pi t)}{\pi t}\} =  \frac{1}{2\pi} Y(j\omega) * rect(\frac{\omega}{4\pi}) \\ \\ 
+    Y(j\omega) = \frac{1}{\pi} rect(\frac{\omega}{4\pi}) * \pi [\delta(\omega-4\pi) + \delta(\omega+4\pi)] \\
+    \Rightarrow Z(j\omega) = \frac{1}{2\pi} \left(rect(\frac{\omega}{4\pi})* rect(\frac{\omega}{4\pi})\right) * [\delta(\omega-4\pi) + \delta(\omega+4\pi)]
+    \end{math} 
+    \subsubsection*{ii)}
+    \begin{math}
+    y(t) \longleftrightarrow Y(j\omega) = rect(\frac{\omega+4\pi}{4\pi}) + rect(\frac{\omega-4\pi}{4\pi}) \\
+    Y(j\omega) = \frac{1}{\pi} rect(\frac{\omega}{4\pi}) * \pi [\delta(\omega-4\pi) + \delta(\omega+4\pi)] \\
+    \textrm{By modulation property of CTFT: } \\
+    \mathscr{F}^{-1}\{Y(j\omega)\} = y(t) =  \frac{2sin(2\pi t)}{\pi t} cos(4\pi t) 
+    \end{math} 
     \section*{Question 4}
     \subsection*{a)}
     \subsubsection*{i)}
@@ -65,7 +101,7 @@
      \subsubsection*{ii)}
     \begin{math} 
     X(e^{j\Omega}) = \displaystyle\sum_{n=-\infty}^{\infty} (2\delta[n-3] - \delta[n-10] ) e^{-j\Omega n} \stackrel{\text{(by linearity)}}{=} 2\displaystyle\sum_{n=-\infty}^{\infty} \delta[n-3] e^{-j\Omega n} - \displaystyle\sum_{n=-\infty}^{\infty} \delta[n-10] e^{-j\Omega n} \\ \\
-    \textrm{By time-shifting property of DTFT: } \\ 
+    \textrm{By time-shift property of DTFT: } \\ 
     X(e^{j\Omega}) = 2e^{-j3\Omega} - e^{-j10\Omega} 
     \end{math} 
       \subsubsection*{iii)}
@@ -84,7 +120,7 @@
     Say that,  \begin{math} 
     \hat x[n] = \left(\frac{1}{2}\right)^{n} u[n] - 3^{n} u[-n-1]  \textrm{ and } \mathscr{F}\{\hat x[n]\}= \hat X(e^{j\Omega}) =  \frac{1}{1- \frac{1}{2} e^{-j\Omega}} - \left(\frac{1}{1- \frac{1}{3} e^{j\Omega}} -1\right)
     \end{math} \\ 
-    By time-shifting property of DTFT: \\ 
+    By time-shift property of DTFT: \\ 
     \begin{math} 
     x[n] = \hat x[n-7] \longleftrightarrow X(e^{j\Omega}) = \hat X(e^{j\Omega}) e^{-j7\Omega}  \\ \\
     \Rightarrow X(e^{j\Omega}) = \frac{e^{-j7\Omega}}{1- \frac{1}{2} e^{-j\Omega}} - \left(\frac{e^{-j7\Omega}}{1- \frac{1}{3} e^{j\Omega}} -e^{-j7\Omega}\right)
@@ -120,13 +156,23 @@
     \subsubsection*{ii)}
     \begin{math}
     \textrm{We know that, } \mathscr{F}\{1\} =  2\pi \displaystyle\sum_{m=-\infty}^{\infty} \delta(\Omega - 2\pi m) \\
-    \textrm{By frequency-shifting property of DTFT: } \\
+    \textrm{By frequency-shift property of DTFT: } \\
      \mathscr{F}\{e^{j\Omega_0 n}\} = 2\pi \displaystyle\sum_{m=-\infty}^{\infty} \delta(\Omega - \Omega_0 - 2\pi m) \\ 
     \Rightarrow \mathscr{F}\{e^{j\frac{\pi}{3}n}\} = 2\pi \displaystyle\sum_{m=-\infty}^{\infty} \delta(\Omega - \frac{\pi}{3} - 2\pi m) = 2\pi X(e^{j\Omega}) \\
     \Rightarrow \mathscr{F}^{-1}\{\displaystyle\sum_{m=-\infty}^{\infty} \delta(\Omega - \frac{\pi}{3} - 2\pi m)\} = \frac{e^{j\frac{\pi}{3}n}}{2\pi} = x[n]  
     \end{math}
     \subsubsection*{iii)}
+    \begin{math}
+    x[n] = \frac{1}{2\pi} \displaystyle\int_{-\pi}^{\pi} X(e^{j\Omega}) e^{j\Omega n} d\Omega = \frac{1}{2\pi} \underbrace{\displaystyle\int_{-\pi}^{\frac{-\pi}{2}} e^{j\Omega n} d\Omega}_{= \displaystyle\int_{\frac{\pi}{2}}^{\pi} e^{-j\Omega n} d\Omega} + \frac{1}{2\pi} \displaystyle\int_{\frac{\pi}{2}}^{\pi} e^{j\Omega n} d\Omega = \frac{1}{2\pi} \displaystyle\int_{\frac{\pi}{2}}^{\pi} e^{j\Omega n} + e^{-j\Omega n} d\Omega \\
+    x[n] = \frac{1}{\pi} \displaystyle\int_{\frac{\pi}{2}}^{\pi} cos(\Omega n) = \frac{1}{\pi n} sin(\Omega n)\Big|_\frac{\pi}{2}^{\pi} = \frac{sin(\pi n)}{\pi n} - \frac{sin(\frac{\pi}{2} n)}{\pi n}
+    \end{math}
     \subsubsection*{iv)}
+    By frequency-shift property of DTFT: \\ 
+    \begin{math}
+    x[n] \longleftrightarrow X(e^{j\Omega}) \\
+    x[n] e^{j\frac{\pi}{4}n} \longleftrightarrow X(e^{j(\Omega-\frac{\pi}{4})}) = Y(e^{j\Omega})\\ \\
+    \textrm{Therefore, } y[n] = x[n] e^{j\frac{\pi}{4}n} = \frac{sin(\pi n)e^{j\frac{\pi}{4}n}}{\pi n} - \frac{sin(\frac{\pi}{2} n)e^{j\frac{\pi}{4}n}}{\pi n}
+    \end{math}
     \section*{Question 5}
     \subsection*{a)}
     \subsection*{b)}
