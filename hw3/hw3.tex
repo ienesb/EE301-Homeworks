@@ -81,9 +81,14 @@
     \subsubsection*{i)}
     By modulation property of CTFT: \\
     \begin{math}
-    z(t) \longleftrightarrow Z(j\omega) = \frac{1}{2\pi} Y(j\omega) * \mathscr{F}\{\frac{sin(2\pi t)}{\pi t}\} =  \frac{1}{2\pi} Y(j\omega) * rect(\frac{\omega}{4\pi}) \\ \\ 
-    Y(j\omega) = \frac{1}{\pi} rect(\frac{\omega}{4\pi}) * \pi [\delta(\omega-4\pi) + \delta(\omega+4\pi)] \\
-    \Rightarrow Z(j\omega) = \frac{1}{2\pi} \left(rect(\frac{\omega}{4\pi})* rect(\frac{\omega}{4\pi})\right) * [\delta(\omega-4\pi) + \delta(\omega+4\pi)]
+    z(t) \longleftrightarrow Z(j\omega) = \frac{1}{2\pi} Y(j\omega) * \mathscr{F}\{\frac{sin(2\pi t)}{\pi t}\} =  \frac{1}{2\pi} Y(j\omega) * rect(\frac{\omega}{4\pi}) \\ 
+    \Rightarrow Z(j\omega) = \frac{1}{2\pi} \left(rect(\frac{\omega+4\pi}{4\pi}) + rect(\frac{\omega-4\pi}{4\pi})\right) * rect(\frac{\omega}{4\pi}) \\
+    \Rightarrow Z(j\omega) = \begin{cases}
+        8\pi -\omega,& 4\pi< \omega < 8\pi \\
+        \omega,&  0< \omega \leq 4\pi \\
+        -\omega,&  -4\pi< \omega < 0 \\
+       8\pi + \omega,&  -8\pi< \omega \leq -4\pi \\      
+      \end{cases} 
     \end{math} 
     \subsubsection*{ii)}
     \begin{math}
