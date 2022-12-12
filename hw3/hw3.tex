@@ -109,8 +109,91 @@
     \subsection*{b)}
     \section*{Question 2}
     \subsection*{a)}
+    We know that \(X(j\omega) = \int_{\infty}^{-\infty} x(t)e^{-j\omega t} \,dt \). Then\\
+    \begin{math}
+      \frac{d}{d\omega} X(j\omega) = \frac{d}{d\omega} \int_{\infty}^{-\infty} x(t)e^{-j\omega t} \,dt
+      =\int_{\infty}^{-\infty} \frac{d}{d\omega}(x(t)e^{-j\omega t}) \,dt = \int_{\infty}^{-\infty} x(t)(-jt)e^{-j\omega t} \,dt
+      =\mathscr{F}\{x(t)(-jt)\}
+    \end{math}\\
+    Therefore, \(\mathscr{F}^{-1}\{\frac{d}{d\omega} X(j\omega)\}=x(t)(-jt)\)
     \subsection*{b)}
+    Let \(g_1(t) = \frac{sin(\pi t)}{\pi t}\). Then we know that \(\mathscr{F}\{g_1(t)\} = \begin{cases}
+    1,& |\omega| < \pi\\
+    0,& else\\
+    \end{cases}\)\\
+    Since \(g(t) = g_1(t)g_1(t)\), by multiplication property, we know that \(G(j\omega) = \frac{1}{2\pi}G_1(j\omega)*G_1(j\omega)\)\\
+    \begin{math}
+      G(j\omega) = \frac{1}{2\pi}\int_{-\infty}^{\infty} G(j\theta)G(j(\omega-\theta)) \,d\theta
+      = \frac{1}{2\pi}\int_{-\pi}^{\pi} G(j(\omega-\theta)) \,d\theta 
+    \end{math}\\
+    Let \(\theta' = \omega - \theta\). Then \(d\theta' = -d\theta\) and\\
+    \begin{math}
+      G(j\omega) = \frac{1}{2\pi}\int_{\omega+\pi}^{\omega-\pi} G_1(j\theta') \,d(-\theta')
+      = \frac{1}{2\pi}\int_{\omega-\pi}^{\omega+\pi} G_1(j\theta') \,d\theta'
+    \end{math}\\
+    For \(\omega < -2\pi\) or \(\omega > 2\pi\), \(G(j\omega) = 0\).
+    For \(\omega < 0\)\\
+    \begin{math}
+      G(j\omega) = \frac{1}{2\pi}\int_{-\pi}^{\omega+\pi}  \,d\theta' = \frac{\omega+\pi}{2\pi}
+    \end{math}\\
+    For \(\omega > 0\)\\
+    \begin{math}
+      G(j\omega) = \frac{1}{2\pi}\int_{\omega-\pi}^{\pi}  \,d\theta' = \frac{2\pi-\omega}{2\pi}
+    \end{math}\\
+    Therefore, \(G(j\omega) =\begin{cases}
+      \frac{\omega+\pi}{2\pi},& -2\pi < \omega < 0\\
+      \frac{2\pi-\omega}{2\pi},& 0 < \omega < 2\pi\\
+      0,& else\\
+      \end{cases}\), and \(G(j\omega)\) is plotted below\\
+    \begin{center}
+      \begin{tikzpicture}
+        \begin{axis}[
+            axis lines = middle,
+            ymin = 0,
+            ymax = 1/pi,
+            xmax = 7,
+            xmin = -7,
+            xlabel = \(\omega\),
+            xlabel style={xshift=0.4cm},
+            ylabel style={yshift=0.4cm},
+            ylabel = {\(G(j\omega)\)},
+            xtick={-2*pi,0,2*pi},
+            xticklabels={$-2\pi$,$2\pi$},
+            xticklabel style={font=\footnotesize,fill=white},
+            yticklabel style={yshift=0.2cm},
+            ytick={0,1/(2*pi)},
+            yticklabels={$1\(2pi)$},
+            samples=500,
+            ]
+                \addplot [domain=-2*pi:0,style=very thick,black] {(x+2*pi)/(2*pi)};
+                \addplot [domain=0:2*pi,style=very thick,black] {(2*pi-x)/(2*pi)};
+                \addplot [domain=-7:-2*pi,style=very thick,black] {0};
+                \addplot [domain=2*pi:7,style=very thick,black] {0};
+                % \draw[dashed] (axis cs: -4,0)--(axis cs: -4,4);
+                % \draw[dashed] (axis cs: 4,0)--(axis cs:  4,4);
+                % \draw[dashed] (axis cs: -4,4)--(axis cs:  4,4);
+        \end{axis} 
+        \end{tikzpicture}
+    \end{center}
     \subsection*{c)}
+    \subsubsection*{i)}
+    \begin{math}
+      H(j\omega) = \int_{-\infty}^{\infty} f^*(-t)e^{-j\omega t} \,dt 
+      = \int_{-\infty}^{\infty} (f(-t)e^{j\omega t})^* \,dt 
+    \end{math}\\
+    Let \(t' = -t\). Then \(dt'=-dt\) and \\
+    \begin{math}
+      H(j\omega) = \int_{\infty}^{-\infty} (f(t')e^{-j\omega t'})^* \,d(-t')
+      = \int_{-\infty}^{\infty} (f(t')e^{-j\omega t'})^* \,d(t')
+      = (\int_{-\infty}^{\infty} f(t')e^{-j\omega t'} \,d(t'))^*
+      = F^*(j\omega) 
+    \end{math}
+    \subsubsection*{ii)}
+    Let \(\mathscr{F}\{y(t)\} = Y(j\omega)\). Then \(Y(j\omega) = F^*(j\omega)F(j\omega) = |F(j\omega)|^2\)\\
+    \begin{math}
+      y(t) = \frac{1}{2\pi} \int_{-\infty}^{\infty} Y(j\omega)e^{j\omega t} \,d\omega
+      =
+    \end{math}
     \section*{Question 3}
     \subsection*{a)}
     \subsubsection*{i)}
