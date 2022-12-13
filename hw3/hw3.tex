@@ -82,27 +82,24 @@
 \begin{tikzpicture}
  \begin{axis}[
     axis lines = middle,
-    ymin = -0.2,
-    ymax = 4.3,
-    xmax = 8.1,
-    xmin = -8.1,
+    xmax = 4,
+    xmin = -4,
     xlabel = \(\omega\),
     xlabel style={xshift=0.4cm},
     ylabel style={yshift=0.4cm},
     ylabel = {\(\phase{H(j\omega)}\)},
     xtick={-4, -2, 0, 2, 4},
     xticklabel style={font=\footnotesize,fill=white},
-    yticklabel style={yshift=0.2cm},
-    ytick={0,2,4},
+    yticklabel style={font=\footnotesize,fill=white,yshift=0.2cm},
+    ytick={-90,-45,0,45,90},
+    yticklabels={$-90^{\circ}$,$-45^{\circ}$,,$45^{\circ}$,$90^{\circ}$},
     samples=500,
+    enlargelimits=true,
     ]
-        \addplot [domain=-4:0,style=very thick,black] {-x};
-        \addplot [domain=0:4,style=very thick,black] {x};
-        \addplot [domain=-8:-4,style=very thick,black] {0};
-        \addplot [domain=4:8,style=very thick,black] {0};
-        \draw[dashed] (axis cs: -4,0)--(axis cs: -4,4);
-        \draw[dashed] (axis cs: 4,0)--(axis cs:  4,4);
-        \draw[dashed] (axis cs: -4,4)--(axis cs:  4,4);
+        \addplot [domain=-4:0,style=very thick,black] {-90};
+        \addplot [domain=0:4,style=very thick,black] {90};
+        \draw[dashed] (axis cs: -4,0)--(axis cs: -4,-90);
+        \draw[dashed] (axis cs: 4,0)--(axis cs:  4,90);
 \end{axis} 
 \end{tikzpicture}
 \end{center}
@@ -245,7 +242,7 @@
     \textrm{By convolution property of CTFT: } y(t) = h(t) * x(t) \longleftrightarrow Y(j\omega) = H(j\omega)X(j\omega)\\
     Y(j\omega) = \left(1-rect(\frac{\omega}{4\pi})\right)  \left(\frac{1}{2} rect(\frac{\omega-2\pi}{8\pi}) + \frac{1}{2} rect(\frac{\omega+2\pi}{8\pi})\right) \\
     Y(j\omega) = \frac{1}{2} rect(\frac{\omega-2\pi}{8\pi}) + \frac{1}{2} rect(\frac{\omega+2\pi}{8\pi}) - \frac{1}{2} \left(rect(\frac{\omega}{4\pi}) rect(\frac{\omega-2\pi}{8\pi})+ rect(\frac{\omega}{4\pi}) rect(\frac{\omega+2\pi}{8\pi})\right) \\
-    Y(j\omega) = rect(\frac{\omega+4\pi}{4\pi}) + rect(\frac{\omega-4\pi}{4\pi}) \\
+    Y(j\omega) = \frac{1}{2} \left(rect(\frac{\omega+4\pi}{4\pi}) + rect(\frac{\omega-4\pi}{4\pi})\right) \\
     \end{math}
     \begin{center}
   \begin{tikzpicture}
@@ -265,14 +262,14 @@
     samples=500,
     enlargelimits=true,
     ]
-        \addplot [domain=-6*pi:-2*pi,style=very thick,black] {1};
+        \addplot [domain=-6*pi:-2*pi,style=very thick,black] {0.5};
         \addplot [domain=-2*pi:2*pi,style=very thick,black] {0};
-        \addplot [domain=2*pi:6*pi,style=very thick,black] {1};
-        \draw[dashed] (axis cs: 2*pi,0)--(axis cs: 2*pi,1);
-        \draw[dashed] (axis cs: -2*pi,0)--(axis cs: -2*pi,1);
-        \draw[dashed] (axis cs: 6*pi,0)--(axis cs: 6*pi,1);
-        \draw[dashed] (axis cs: -6*pi,0)--(axis cs: -6*pi,1);
-        \draw[dashed] (axis cs: -2*pi,1)--(axis cs: 2*pi,1);
+        \addplot [domain=2*pi:6*pi,style=very thick,black] {0.5};
+        \draw[dashed] (axis cs: 2*pi,0)--(axis cs: 2*pi,0.5);
+        \draw[dashed] (axis cs: -2*pi,0)--(axis cs: -2*pi,0.5);
+        \draw[dashed] (axis cs: 6*pi,0)--(axis cs: 6*pi,0.5);
+        \draw[dashed] (axis cs: -6*pi,0)--(axis cs: -6*pi,0.5);
+        \draw[dashed] (axis cs: -2*pi,0.5)--(axis cs: 2*pi,0.5);
 \end{axis}
 \end{tikzpicture}
 \end{center}
@@ -396,7 +393,8 @@
     \subsubsection*{iii)}
     \begin{math}
     x[n] = \frac{1}{2\pi} \displaystyle\int_{-\pi}^{\pi} X(e^{j\Omega}) e^{j\Omega n} d\Omega = \frac{1}{2\pi} \underbrace{\displaystyle\int_{-\pi}^{\frac{-\pi}{2}} e^{j\Omega n} d\Omega}_{= \displaystyle\int_{\frac{\pi}{2}}^{\pi} e^{-j\Omega n} d\Omega} + \frac{1}{2\pi} \displaystyle\int_{\frac{\pi}{2}}^{\pi} e^{j\Omega n} d\Omega = \frac{1}{2\pi} \displaystyle\int_{\frac{\pi}{2}}^{\pi} e^{j\Omega n} + e^{-j\Omega n} d\Omega \\
-    x[n] = \frac{1}{\pi} \displaystyle\int_{\frac{\pi}{2}}^{\pi} cos(\Omega n) = \frac{1}{\pi n} sin(\Omega n)\Big|_\frac{\pi}{2}^{\pi} = \frac{sin(\pi n)}{\pi n} - \frac{sin(\frac{\pi}{2} n)}{\pi n}
+    x[n] = \frac{1}{\pi} \displaystyle\int_{\frac{\pi}{2}}^{\pi} cos(\Omega n) = \frac{1}{\pi n} sin(\Omega n)\Big|_\frac{\pi}{2}^{\pi} = \frac{sin(\pi n)}{\pi n} - \frac{sin(\frac{\pi}{2} n)}{\pi n} =  \frac{sin(\pi n)}{\pi n} - \frac{1}{2} \frac{sin(\frac{\pi}{2} n)}{\frac{\pi}{2} n} \\
+    x[n] = sinc(n) - \frac{1}{2} sinc(\frac{n}{2})
     \end{math}
     \subsubsection*{iv)}
     By frequency-shift property of DTFT: \\ 
