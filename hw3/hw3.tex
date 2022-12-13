@@ -104,6 +104,63 @@
 \end{tikzpicture}
 \end{center}
     \subsection*{b)}
+    x(t) can be plotted as: 
+    \begin{center}
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines = middle,
+    ymin = -0.2,
+    ymax = 2.1,
+    xmax = 4.9,
+    xmin = -4.9,
+    xlabel = \(t\),
+    xlabel style={xshift=0.4cm},
+    ylabel style={yshift=0.4cm},
+    ylabel = {\(x(t)\)},
+    ytick={0, 1, 2},
+    xticklabel style={font=\footnotesize,fill=white},
+    xtick={-4,-3,-2,-1,0, 1, 2, 3, 4},
+    yticklabel style={yshift=0.2cm},
+    samples=500,
+    dot/.style={fill=black,circle,minimum size=3pt}
+    ]
+        \draw[-latex, style = very thick, black] (axis cs:3,0) -- (axis cs:3,1);
+        \draw[-latex, style = very thick, black] (axis cs:2,0) -- (axis cs:2,1);
+        \draw[-latex, style = very thick, black] (axis cs:4,0) -- (axis cs:4,2);
+        \draw[-latex, style = very thick, black] (axis cs:1,0) -- (axis cs:1,1);
+        \draw[-latex, style = very thick, black] (axis cs:0,0) -- (axis cs:0,2);
+        \draw[-latex, style = very thick, black] (axis cs:-1,0) -- (axis cs:-1,1);
+        \draw[-latex, style = very thick, black] (axis cs:-2,0) -- (axis cs:-2,1); 
+        \draw[-latex, style = very thick, black] (axis cs:-3,0) -- (axis cs:-3,1); 
+        \draw[-latex, style = very thick, black] (axis cs:-4,0) -- (axis cs:-4,2);        
+        \draw[dashed] (axis cs: -4,1)--(axis cs: 4,1);
+        \draw[dashed] (axis cs: -4,2)--(axis cs:  4,2);
+        \filldraw[black] (axis cs: 4.2,0.7) circle (1.2pt) node[anchor=west]{};
+        \filldraw[black] (axis cs: 4.5,0.7) circle (1.2pt) node[anchor=west]{};
+        \filldraw[black] (axis cs: 4.8,0.7) circle (1.2pt) node[anchor=west]{};
+        \filldraw[black] (axis cs: -4.2,0.7) circle (1.2pt) node[anchor=west]{};
+        \filldraw[black] (axis cs: -4.5,0.7) circle (1.2pt) node[anchor=west]{};
+        \filldraw[black] (axis cs: -4.8,0.7) circle (1.2pt) node[anchor=west]{};
+\end{axis} 
+\end{tikzpicture}
+\end{center}
+x(t) is a periodic signal with fundamental period \(T_0 = 4\). Also, \(x(t)\) can be written in CTFS representation: 
+\begin{math}
+x(t) =  \displaystyle\sum_{k=-\infty}^{\infty} a_k e^{jk\omega_0 t} \textrm{, where } \omega_0 = \frac{2\pi}{T_0} = \frac{\pi}{2}. \\ \\ \textrm{Let's first calculate the FS cofficients: }
+a_k = \frac{1}{T_0} \displaystyle\int_{t_0}^{t_0 + T_0} x(t) e^{-jk\omega_0 t} dt = \frac{1}{4} \displaystyle\int_{0^{-}}^{4^{-}} x(t) e^{-jk\frac{\pi}{2} t} \\
+\Rightarrow a_0 = \frac{5}{4}, \ a_1 = \frac{1}{4}, \ a_{-1} = \frac{1}{4},\ a_2 = \frac{3}{4}, \ a_{-2} = \frac{3}{4} \\ \\ 
+\textrm{Also, recall that: } 
+\end{math} 
+\begin{center}
+\(e^{jk\omega_0 t} \longrightarrow \boxed{\textrm{LTI system}} \longrightarrow H(jk\omega_0) e^{jk\omega_0 t}\)
+\end{center}
+By linearity: 
+\begin{center}
+ \( \underbrace{\displaystyle\sum_{k=-\infty}^{\infty} a_k e^{jk\omega_0 t}}_{x(t)} \longrightarrow \boxed{\textrm{LTI system}} \longrightarrow \underbrace{\displaystyle\sum_{k=-\infty}^{\infty} a_k H(jk\omega_0) e^{jk\omega_0 t}}_{y(t)} \)
+ \end{center}  
+ Therefore, \begin{math} y(t) =  \displaystyle\sum_{k=-2}^{2} a_k H(jk\omega_0) e^{jk\omega_0 t} = - \frac{3}{4} \pi j e^{-j\pi t} - \frac{3}{8} \pi j e^{-j\frac{\pi}{2} t} + 0 + \frac{3}{8} \pi j e^{j\frac{\pi}{2} t} + \frac{3}{4} \pi j e^{j\pi t} \\
+ y(t) = -\frac{3\pi}{2} \left(\frac{1}{2j} e^{j\pi t} - \frac{1}{2j} e^{-j\pi t}\right)  -\frac{3\pi}{4} \left(\frac{1}{2j} e^{j\frac{\pi}{2} t} - \frac{1}{2j} e^{-j\frac{\pi}{2} t}\right) = -\frac{3\pi}{2} sin(\pi t) - \frac{3\pi}{4} sin(\frac{\pi}{2} t)
+ \end{math} 
     \section*{Question 2}
     \subsection*{a)}
     We know that \(X(j\omega) = \int_{\infty}^{-\infty} x(t)e^{-j\omega t} \,dt \). Then\\
