@@ -458,7 +458,7 @@ By linearity:
     \begin{math}
     x[n] \longleftrightarrow X(e^{j\Omega}) \\
     x[n] e^{j\frac{\pi}{4}n} \longleftrightarrow X(e^{j(\Omega-\frac{\pi}{4})}) = Y(e^{j\Omega})\\ \\
-    \textrm{Therefore, } y[n] = x[n] e^{j\frac{\pi}{4}n} = \frac{sin(\pi n)e^{j\frac{\pi}{4}n}}{\pi n} - \frac{sin(\frac{\pi}{2} n)e^{j\frac{\pi}{4}n}}{\pi n}
+    \textrm{Therefore, } y[n] = x[n] e^{j\frac{\pi}{4}n} = sinc(n) e^{j\frac{\pi}{4}n} - \frac{1}{2} sinc(\frac{n}{2}) e^{j\frac{\pi}{4}n}
     \end{math}
     \section*{Question 5}
     \subsection*{a)}
