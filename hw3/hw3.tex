@@ -560,6 +560,22 @@ By linearity:
     \Rightarrow \displaystyle\sum_{n=1}^{\infty} (h[n])^{2} = \frac{1}{2} (\frac{13}{9} - \frac{25}{36}) = \frac{3}{8}
     \end{math}
     \subsection*{d)}
-    \section*{Question 6}
-
+    \subsubsection*{i)}
+    The given LTI system is stable since \(h[n]\) is absolutely summable as it can be seen in part c). Also, recall that for a stable LTI system:
+    \begin{center}
+\(e^{j\Omega n} \longrightarrow \boxed{\textrm{LTI system}} \longrightarrow H(e^{j \Omega}) e^{j\Omega n}\)
+\end{center}
+ \begin{math}
+   w[n] = 1 = e^{j0n} \Rightarrow v[n] = H(e^{j0})e^{j0n} = 2 
+    \end{math}
+    \subsubsection*{ii)}
+     \begin{math}
+   w[n] = e^{j \frac{\pi}{6}n} \Rightarrow v[n] = H(e^{j\frac{\pi}{6}})e^{j \frac{\pi}{6}n}  = 2 e^{j \frac{\pi}{6}n}
+    \end{math}
+    \subsubsection*{iii)}
+    \begin{math}
+   w[n] = 3cos(\frac{\pi}{6} n) + 5sin(\frac{\pi}{2} n) = \frac{3}{2} (e^{j\frac{\pi}{6} n}+ e^{-j\frac{\pi}{6} n}) + \frac{5}{2j} (e^{j\frac{\pi}{2} n}-e^{-j\frac{\pi}{2} n})\\
+   v[n] = \frac{3}{2} H(e^{j\frac{\pi}{6}})e^{j \frac{\pi}{6}n} + \frac{3}{2} H(e^{-j\frac{\pi}{6}}) e^{-j \frac{\pi}{6}n} + \frac{5}{2j} H(e^{j\frac{\pi}{2}})e^{j \frac{\pi}{2}n} - \frac{5}{2j} H(e^{-j\frac{\pi}{2}})e^{-j \frac{\pi}{2}n} \\
+   v[n] = 3 (e^{j\frac{\pi}{6} n}+ e^{-j\frac{\pi}{6} n}) + 0 = 6cos(\frac{\pi}{6} n)
+    \end{math}
 \end{document}
