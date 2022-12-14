@@ -521,6 +521,22 @@ By linearity:
 \end{center}
     \subsection*{b)}
     \subsection*{c)}
+    By Parseval's identity: 
+    \begin{math}
+    \displaystyle\sum_{n=-\infty}^{\infty} |h[n]|^{2} = \frac{1}{2\pi} \displaystyle\int_{-\pi}^{\pi} |H(e^{j\Omega})|^{2} d\Omega \\
+    \displaystyle\sum_{n=-\infty}^{\infty} |h[n]|^{2} = \displaystyle\sum_{n=-\infty}^{\infty} (h[n])^{2}, \textrm{since } h[n] \textrm{ is real-valued.} \\  
+    \textrm{Also, }\displaystyle\sum_{n=-\infty}^{\infty} |h[n]|^{2} = (h[0])^{2} + 2 \displaystyle\sum_{n=1}^{\infty} |h[n]|^{2} \textrm{ since \(h[n]\) is even function.} \\
+    |H(e^{j\Omega})|^{2} = \begin{cases}
+      (\frac{-3\Omega}{\pi} -2)^{2},& -\pi < \Omega < -\frac{2\pi}{3}\\
+      0,& -\frac{2\pi}{3} < \Omega < -\frac{\pi}{3}\\
+      2^{2},& -\frac{\pi}{3} < \Omega < 0 \\
+      2^{2},& 0 < \Omega < \frac{\pi}{3} \\
+      0,& \frac{\pi}{3} < \Omega < \frac{2\pi}{3}\\
+      (\frac{3\Omega}{\pi} -2)^{2},& \frac{2\pi}{3} < \Omega < \pi \\
+      \end{cases} \\ \\
+      \displaystyle\int_{-\pi}^{\pi} |H(e^{j\Omega})|^{2} d\Omega = \left(\frac{3 \Omega^{3}}{\pi^{2}} + \frac{6 \Omega^{2}}{\pi} + 4\Omega \right)\displaystyle\Big|_{-\frac{2\pi}{3}}^{-\pi} + (4\Omega) \displaystyle\Big|_{-\frac{\pi}{3}}^{\frac{\pi}{3}} + \left(\frac{3 \Omega^{3}}{\pi^{2}} - \frac{6 \Omega^{2}}{\pi} + 4\Omega \right)\displaystyle\Big|_{\frac{2\pi}{3}}^{\pi} = \frac{8\pi}{3}  \\
+    \displaystyle\sum_{n=-\infty}^{\infty} (h[n])^{2} = \frac{1}{2\pi} \displaystyle\int_{-\pi}^{\pi} |H(e^{j\Omega})|^{2} d\Omega = \frac{4}{3} \\ 
+    \end{math}
     \subsection*{d)}
     \section*{Question 6}
 
