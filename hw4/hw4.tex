@@ -16,6 +16,8 @@
 \usepackage{svg}
 \usepackage{mathrsfs}
 \usepackage{steinmetz}
+\usepackage{tikz}
+\usetikzlibrary{shapes.misc}
 % \usepackage[nocheck]{fancyhdr}
 
 \sloppy
@@ -184,28 +186,74 @@
     
     \section*{Question 3}
     \subsection*{a)}
-    
+    \begin{math}
+        s^2Y(s) - sY(s) -6Y(s) = 2sX(s) -11X(s)\\
+        Y(s)(s^2-s-6) = X(s)(2s-11)\\
+        H_1(s) = \frac{Y(s)}{X(s)} = \frac{2s-11}{(s-3)(s+2)} = \frac{-1}{s-3} + \frac{3}{s+2}\\
+    \end{math}
+    The pole-zero diagram is drawn below.
+    % pole-zero
+    \begin{tikzpicture}
+        % Axes:
+        \draw [-latex] (-5,0) -- (7,0) node [above left]  {\(\sigma\)};
+        \draw [-latex] (0,-5) -- (0,5) node [below right] {\(j\omega\)};
+        \node[cross out,draw=black] at (-2,0) {};
+        \node[cross out,draw=black] at (3,0) {};
+        \node[circle, fill=white, draw=black] at (11/2,0) {};
+        
+        % \draw[dashed] (0,0) -- node[pos=0.8, above right] {$\omega_z$}(125:3.5) node[solid, fill=white, circle,draw=black] {};
+        
+        % \draw[dashed]  (-5,0) node[below left] {$-\xi_p\omega_p$} --  (-5,-3) node[solid, cross out,draw=black] {};
+        % \draw[dashed]  (-2,0) node[below left] {$-\xi_z\omega_z$} --  (-2,-3) node[solid, fill=white, circle,draw=black] {};
+        
+        \end{tikzpicture}
+
+    We cannot determine \(h_1(t)\) unless we know the ROC.
     \subsection*{b)}
-     \subsubsection*{i)}       
+    \subsubsection*{i)} 
+    If the system is stable, then ROC includes \(j\omega\) axis. Therefore, we can determine ROC as \(-2 < \sigma < 3\).\\
+    \(-2 < \sigma\) implies \(\frac{3}{s+2}\) corresponds to right-sided time function which is \(3e^{-2t}u(t)\).\\
+    \(\sigma < 3\) implies \(\frac{-1}{s-3}\) corresponds to left-sided time function which is \(e^{3t}u(-t)\).\\
+    \(h(t) = e^{3t}u(-t) + 3e^{-2t}u(t)\)      
+
+    \subsubsection*{ii)}
+    If the system is causal, then ROC is the right side of the right-most pole. Therefore, we can determine ROC as \(\sigma > 3\).\\
+    \(\sigma > -2\) implies \(\frac{3}{s+2}\) corresponds to right-sided time function which is \(3e^{-2t}u(t)\).\\
+    \(\sigma > 3\) implies \(\frac{-1}{s-3}\) corresponds to right-sided time function which is \(-e^{3t}u(t)\).\\
+    \(h(t) = (-e^{3t} + 3e^{-2t})u(t)\) 
+    
+    \subsubsection*{iii)}
+    If the system is anti-causal, then ROC is the left side of the left-most pole. Therefore, we can determine ROC as \(\sigma < -2\).\\
+    \(\sigma < -2\) implies \(\frac{3}{s+2}\) corresponds to right-sided time function which is \(-3e^{-2t}u(-t)\).\\
+    \(\sigma < 3\) implies \(\frac{-1}{s-3}\) corresponds to right-sided time function which is \(e^{3t}u(-t)\).\\
+    \(h(t) = (e^{3t} + -3e^{-2t})u(-t)\) 
+    
+    \subsection*{c)}
+    \subsubsection*{i)}    
+    The ROC is the whole s-plane.   
     
     \subsubsection*{ii)}
+    \begin{math}
+        H(s) = \frac{Y(s)}{X(s)} = s-3\\
+        Y(s) = X(s)(s-3) = sX(s) -3X(s)\\
+        y(t) = \frac{d}{dt}x(t) - 3x(t)
+    \end{math}
     
-     \subsubsection*{iii)}
-    
-     \subsection*{c)}
-     \subsubsection*{i)}       
-    
+    \subsection*{d)}
+    \subsubsection*{i)}       
+    Assume \(h_1(t)\) is causal. Then it is not stable since the ROC does not include \(j\omega\) axis.
     \subsubsection*{ii)}
-    
-     \subsection*{d)}
-     \subsubsection*{i)}       
-    
-    \subsubsection*{ii)}
-    
-     \subsubsection*{iii)}
+    \begin{math}
+        H(s) = H_1(s)H_2(s) = \frac{2s-11}{(s-3)(s+2)}(s-3)
+        H(s) = \frac{2s-11}{s+2} \;\; ROC: \sigma > -2 
+    \end{math}
+    \subsubsection*{iii)}
+    The cascaded system has a ROC which includes \(j\omega\) axis. Therefore, we can say that the cascaded 
+    systen is stable although the first system is not stable. The second system is used to make the first 
+    system stable.
        
-     \section*{Question 4}
-     \subsection*{a)}
+    \section*{Question 4}
+    \subsection*{a)}
     
      \subsection*{b)}
     
