@@ -67,6 +67,9 @@
   \begin{tikzpicture}
 \begin{axis}[
     axis lines = middle,
+    scale only axis,
+    width=12cm, 
+    height=6cm,
     ymin = -0.2,
     ymax = 0.8,
     xlabel = \(\omega\),
@@ -75,7 +78,7 @@
     ylabel = {\(X_s(j\omega)\)},
     xtick={-3*pi, -2*pi, -1*pi, 0, 1*pi, 2*pi, 3*pi},
     xticklabel style={font=\footnotesize,fill=white,inner sep=2pt},
-    xticklabels={$-3\Delta\omega$,,$-\Delta\omega$,,$\Delta\omega$,,$3\Delta\omega$},
+    xticklabels={$-3\Delta\omega$,$-2\Delta\omega$,$-\Delta\omega$,,$\Delta\omega$,$2\Delta\omega$,$3\Delta\omega$},
     samples=500,
     enlargelimits=true,
     ytick style={draw=none},
@@ -93,6 +96,9 @@
         \filldraw[black] (axis cs: -10,0.3) circle (1.2pt) node[anchor=west]{};
         \filldraw[black] (axis cs: -10.5,0.3) circle (1.2pt) node[anchor=west]{};
         \filldraw[black] (axis cs: -11,0.3) circle (1.2pt) node[anchor=west]{};
+        \draw[dashed] (axis cs: 2*pi,0)--(axis cs: 2*pi,0.5);
+        \draw[dashed] (axis cs: -2*pi,0)--(axis cs: -2*pi,0.5);
+        
 \end{axis}
 \end{tikzpicture}
 \end{center}
@@ -105,6 +111,9 @@
   \begin{tikzpicture}
 \begin{axis}[
     axis lines = middle,
+    scale only axis,
+    width=12cm, 
+    height=6cm,
     ymin = -0.2,
     ymax = 0.8,
     xlabel = \(\omega\),
@@ -113,7 +122,7 @@
     ylabel = {\(X_s(j\omega)\)},
     xtick={-4*pi,-3*pi, -2*pi, -1*pi, 0, 1*pi, 2*pi, 3*pi},
     xticklabel style={font=\footnotesize,fill=white,inner sep=2pt},
-    xticklabels={,$-3\Delta\omega$,,$-\Delta\omega$,,$\Delta\omega$,,$3\Delta\omega$},
+    xticklabels={$-4\Delta\omega$,$-3\Delta\omega$,$-2\Delta\omega$,$-\Delta\omega$,,$\Delta\omega$,$2\Delta\omega$,$3\Delta\omega$},
     samples=500,
     enlargelimits=true,
     ytick style={draw=none},
@@ -142,6 +151,9 @@
   \begin{tikzpicture}
 \begin{axis}[
     axis lines = middle,
+    scale only axis,
+    width=12cm, 
+    height=6cm,
     ymin = -0.2,
     ymax = 0.8,
     xlabel = \(\omega\),
@@ -150,7 +162,7 @@
     ylabel = {\(X_s(j\omega)\)},
     xtick={-3*pi, -2*pi, -1*pi, 0, 1*pi, 2*pi, 3*pi},
     xticklabel style={font=\footnotesize,fill=white,inner sep=2pt},
-    xticklabels={$-3\Delta\omega$,,$-\Delta\omega$,,$\Delta\omega$,,$3\Delta\omega$},
+    xticklabels={$-3\Delta\omega$,$-2\Delta\omega$,$-\Delta\omega$,,$\Delta\omega$,$2\Delta\omega$,$3\Delta\omega$},
     samples=500,
     enlargelimits=true,
     ytick style={draw=none},
@@ -179,6 +191,85 @@
 \end{center}
 
     \subsection*{c)}
+    The minimum sampling period, \(T_s = \frac{\pi}{2\Delta\omega} \Rightarrow\) minimum sampling rate, \( \frac{1}{T_s} = \frac{2\Delta\omega}{\pi}\). The Fourier transform of \(X_s(j\omega)\) can be seen below. 
+    \begin{center}
+  \begin{tikzpicture}
+\begin{axis}[
+    axis lines = middle,
+    scale only axis,
+    width=14cm, 
+    height=6cm,
+    ymin = -0.2,
+    ymax = 0.8,
+    xlabel = \(\omega\),
+    xlabel style={xshift=0.4cm},
+    ylabel style={yshift=0.4cm},
+    ylabel = {\(X_s(j\omega)\)},
+    xtick={-6*pi, -5*pi, -4*pi, -3*pi, -2*pi, -1*pi, 0, 1*pi, 2*pi, 3*pi, 4*pi, 5*pi, 6*pi},
+    xticklabel style={font=\footnotesize,fill=white,inner sep=2pt},
+    xticklabels={$-6\Delta\omega$,,,$-3\Delta\omega$,,$-\Delta\omega$,,$\Delta\omega$,,$3\Delta\omega$,,,$6\Delta\omega$},
+    samples=500,
+    enlargelimits=true,
+    ytick style={draw=none},
+    yticklabels={draw=none},
+    ]
+     
+       \addplot [domain=pi:2*pi,style=very thick,black] {-(x-2*pi)/(2*pi)};       
+       \addplot [domain=-2*pi:-pi,style=very thick,black] {(x+2*pi)/(2*pi)};
+       \addplot [domain=-3*pi:-2*pi,style=very thick,black] {-(x+2*pi)/(2*pi)};
+       \addplot [domain=2*pi:3*pi,style=very thick,black] {(x-2*pi)/(2*pi)};
+       \addplot [domain=-6*pi:-5*pi,style=very thick,black] {(x+6*pi)/(2*pi)};
+       \addplot [domain=5*pi:6*pi,style=very thick,black] {-(x-6*pi)/(2*pi)};
+       
+   
+        \draw[very thick] (axis cs: -3*pi,0)--(axis cs: -3*pi,0.5);
+        \draw[very thick] (axis cs: -pi,0)--(axis cs: -pi,0.5);
+        \draw[very thick] (axis cs: pi,0)--(axis cs: pi,0.5);
+        \draw[very thick] (axis cs: 3*pi,0)--(axis cs: 3*pi,0.5);
+        \draw[very thick] (axis cs: 5*pi,0)--(axis cs: 5*pi,0.5);
+        \draw[very thick] (axis cs: -5*pi,0)--(axis cs: -5*pi,0.5);
+        
+        
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+ The minimum sampling period, \(T_s = \frac{\pi}{\Delta\omega} \Rightarrow\) minimum sampling rate, \( \frac{1}{T_s} = \frac{\Delta\omega}{\pi}\). The Fourier transform of \(X_s(j\omega)\) can be seen below. 
+    \begin{center}
+  \begin{tikzpicture}
+\begin{axis}[
+    axis lines = middle,
+    scale only axis,
+    width=12cm, 
+    height=6cm,
+    ymin = -0.2,
+    ymax = 0.8,
+    xlabel = \(\omega\),
+    xlabel style={xshift=0.4cm},
+    ylabel style={yshift=0.4cm},
+    ylabel = {\(X_s(j\omega)\)},
+    xtick={ -4*pi, -3*pi, -2*pi, -1*pi, 0, 1*pi, 2*pi, 3*pi, 4*pi},
+    xticklabel style={font=\footnotesize,fill=white,inner sep=2pt},
+    xticklabels={$-4\Delta\omega$,$-3\Delta\omega$,$-2\Delta\omega$,$-\Delta\omega$,,$\Delta\omega$,$2\Delta\omega$,$3\Delta\omega$,$4\Delta\omega$},
+    %samples=500,
+    enlargelimits=true,
+    ytick style={draw=none},
+    yticklabels={draw=none},
+    ]
+     
+       \addplot [domain=pi:2*pi,style=very thick,black] {-(x-2*pi)/(2*pi)}; 
+       \addplot [domain=-pi:0,style=very thick,black] {-(x)/(2*pi)};  
+       \addplot [domain=0:pi,style=very thick,black] {(x)/(2*pi)};       
+       \addplot [domain=-2*pi:-pi,style=very thick,black] {(x+2*pi)/(2*pi)};
+       \addplot [domain=-3*pi:-2*pi,style=very thick,black] {-(x+2*pi)/(2*pi)};
+       \addplot [domain=2*pi:3*pi,style=very thick,black] {(x-2*pi)/(2*pi)};
+       \addplot [domain=3*pi:4*pi,style=very thick,black] {-(x-4*pi)/(2*pi)};
+       \addplot [domain=-4*pi:-3*pi,style=very thick,black] {(x+4*pi)/(2*pi)};
+        
+        
+\end{axis}
+\end{tikzpicture}
+\end{center}
     
     \section*{Question 2}
     \subsection*{i)}
