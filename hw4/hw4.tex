@@ -356,13 +356,26 @@
     Thus, \(h[n]\) is a real-valued signal. 
     
      \subsection*{b)}
-     
+     Since the DT system is causal, i.e., \(h[n] = 0\) for \(n<0\), the inverse z-transform of \(H(z)\) is right-sided. \\
+     Also, if the DTFT of h[n] exists, the ROC of H(z) contains the jw-axis (\(|z|=1\)).\\
+     \begin{math}
+     H(z) = \frac{1-z^{-1}}{\left(1-a(\frac{1}{\sqrt{2}} - \frac{j}{\sqrt{2}})z^{-1}\right) \left(1-a(\frac{1}{\sqrt{2}} + \frac{j}{\sqrt{2}})z^{-1}\right)} = \frac{c_1}{\left(1-a(\frac{1}{\sqrt{2}} - \frac{j}{\sqrt{2}})z^{-1}\right)} + \frac{c_1}{\left(1-a(\frac{1}{\sqrt{2}} + \frac{j}{\sqrt{2}})z^{-1}\right)} \\ \\
+     h[n] = c_1 [a(\frac{1-j}{\sqrt{2}})]^{n} u[n] + c_2 [a(\frac{1+j}{\sqrt{2}})]^{n} u[n] \textrm{, ROC: } |z|> |a(\frac{1-j}{\sqrt{2}})| = |a(\frac{1+j}{\sqrt{2}})| = a^2 \\
+     \textrm{Thus, the following inequality should be satisfied: } |z| < 1 \Rightarrow a^{2} < 1 \Rightarrow \boxed{0<a<1}
+     \end{math}   
      \subsection*{c)}
     If \begin{math} a = \sqrt{2} \Rightarrow H(z) = \frac{z(z-1)}{z^{2}-2z+2} \\
      x[n] = u[n-1] \Rightarrow X(z) = \displaystyle\sum_{n=-\infty}^{\infty} u[n-1] z^{-n} = \displaystyle\sum_{n=1}^{\infty} z^{-n} = \displaystyle\sum_{n=0}^{\infty} z^{-n} - 1  = \frac{1}{z-1}, |z| < 1 \\
      Y(z) = X(z)H(z) = \frac{z}{z^{2}-2z+2} = \frac{z}{(z-1+j)(z-1-j)} \textrm{, ROC: } |z| > \sqrt{2} \\
-     Y(z) = \frac{z^{-1}}{(1- (1-j)z^{-1})(1-(1+j)z^{-1})} = \frac{c_1}{1-(1-j)z^{-1}} +  \frac{c_2}{1-(1+j)z^{-1}} \\       	Y(z) = \frac{j/2}{1-(1-j)z^{-1}} +  \frac{-j/2}{1-(1+j)z^{-1}} \Longrightarrow y[n] = \frac{j}{2} (1-j)^{n} u[n] -  \frac{j}{2} (1+j)^{n} u[n] \\
+     Y(z) = \frac{z^{-1}}{(1- (1-j)z^{-1})(1-(1+j)z^{-1})} = \frac{c_1}{1-(1-j)z^{-1}} +  \frac{c_2}{1-(1+j)z^{-1}} \\       	
+     Y(z) = \frac{j/2}{1-(1-j)z^{-1}} +  \frac{-j/2}{1-(1+j)z^{-1}} \Longrightarrow y[n] = \frac{j}{2} (1-j)^{n} u[n] -  \frac{j}{2} (1+j)^{n} u[n] 
     \end{math} 
      \subsection*{d)}     
+     By the scaling property in z-domain: 
+     \begin{math}
+     h'[n] =  (\frac{1}{2})^{n} h[n] \longleftrightarrow H'(z) = H(2z) \textrm{, ROC: } |z| > \frac{\sqrt{2}}{2} \\
+     \textrm{Since the ROC of \(H'(z)\) contains \(j\omega\)-axis (\(|z|=1\)), the DTFT of \(H'(z)\) exists: } \\
+     H'(e^{j\Omega}) = H(2e^{j\Omega}) = \frac{z(2z-1)}{2z^{2} -2z +1} \big|_{z=e^{j\Omega}} \\
+     \end{math} 
     
 \end{document}
