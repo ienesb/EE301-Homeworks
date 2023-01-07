@@ -245,10 +245,10 @@
     \begin{math}
     Y(e^{j\Omega}) - \frac{1}{3}Y(e^{j\Omega}) e^{-j\Omega} = \frac{2}{3} X(e^{j\Omega}) - 2 X(e^{j\Omega}) e^{-j\Omega} \\
     Y(e^{j\Omega}) [1-\frac{e^{-j\Omega}}{3}] = X(e^{j\Omega}) [\frac{2}{3} - 2e^{-j\Omega}]  \Rightarrow H(e^{j\Omega}) = \frac{Y(e^{j\Omega})}{X(e^{j\Omega})} = \frac{2-6e^{-j\Omega}}{3-e^{-j\Omega}}  \\
-    x_c(t) = sin(1000\pi t) \ \textrm{and} \ x[n] = x_c(nT) \qquad \boxed{\omega_m = 1000\pi} \\
+    x_c(t) = sin(1000\pi t) \ \textrm{and} \ x[n] = x_c(nT) \qquad \boxed{\omega_c = 1000\pi} \\
     X_c(j\omega) = \frac{\pi}{j} (\delta(\omega-1000\pi) - \delta(\omega+1000\pi)) \\
     X(e^{j\Omega}) = \frac{1}{T} \displaystyle\sum_{k=-\infty}^{\infty} X_c\left(j(\frac{\Omega - 2\pi k}{T})\right) = \frac{\pi}{jT} \\ 
-    X(e^{j\Omega}) = \displaystyle\sum_{k=-\infty}^{\infty} \delta(\frac{\Omega - 2\pi k}{T}-1000\pi) - \delta(\frac{\Omega - 2\pi k}{T}+1000\pi) \qquad \boxed{\underbrace{\frac{2\pi}{T} > 2\omega_m \Rightarrow \frac{1}{T} > 1000}_{\textrm{to avoid aliasing}}} \\
+    X(e^{j\Omega}) = \displaystyle\sum_{k=-\infty}^{\infty} \delta(\frac{\Omega - 2\pi k}{T}-1000\pi) - \delta(\frac{\Omega - 2\pi k}{T}+1000\pi) \qquad \boxed{\underbrace{\frac{2\pi}{T} > 2\omega_c \Rightarrow \frac{1}{T} > 1000}_{\textrm{to avoid aliasing}}} \\
     \textrm{If there is no aliasing, the below equation holds:} \\
     Y_r(j\omega) = \begin{cases}
     H(e^{j\omega T})X_c(j\omega),& |\omega| \leq \frac{\pi}{T} \\
@@ -262,12 +262,16 @@
     \end{math} 
     \subsection*{i)}
     \begin{math}
-    \frac{1}{T} = 2 \textrm{kHz} \Rightarrow  \frac{2\pi}{T} = 2\omega_m \ \textrm{(No aliasing)} \Rightarrow \omega_m T = \frac{\pi}{2} \\
+    \frac{1}{T} = 2 \textrm{kHz} \Rightarrow  \frac{2\pi}{T} > 2\omega_c \ \textrm{(No aliasing)} \Rightarrow \omega_c T = \frac{\pi}{2} \\
     y_r(t) = \frac{1}{2j} \left[ \frac{2-6e^{-j\pi/2}}{3-e^{-j\pi/2}} e^{j1000\pi t} - \frac{2-6e^{j\pi/2}}{3-e^{j\pi/2}} e^{-j1000\pi t} \right] = \frac{1}{2j} \left[(1.2+1.6j)e^{j1000\pi t} - (1.2-1.6j) e^{-j1000\pi t}\right] \\
    \boxed{y_r(t) = 1.2sin(1000\pi t) + 1.6cos(1000\pi t)}
     \end{math}
     \subsection*{ii)}
-    
+    \begin{math}
+    \frac{1}{T} = 1 \textrm{kHz} \Rightarrow  \frac{2\pi}{T} = 2\omega_c \ \textrm{(No aliasing)} \Rightarrow \omega_c T = \pi \\
+    y_r(t) = \frac{1}{2j} \left[ \frac{2-6e^{-j\pi}}{3-e^{-j\pi}} e^{j1000\pi t} - \frac{2-6e^{j\pi}}{3-e^{j\pi}} e^{-j1000\pi t} \right] = \frac{1}{2j} (2e^{j1000\pi t} - 2e^{-j1000\pi t}) \\
+    \boxed{y_r(t) = 2sin(1000\pi t)}
+    \end{math} 
     \section*{Question 3}
     \subsection*{a)}
     If we take the Laplace transform of the both sides of the equation: \\
