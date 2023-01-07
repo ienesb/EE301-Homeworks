@@ -247,8 +247,8 @@
     Y(e^{j\Omega}) [1-\frac{e^{-j\Omega}}{3}] = X(e^{j\Omega}) [\frac{2}{3} - 2e^{-j\Omega}]  \Rightarrow H(e^{j\Omega}) = \frac{Y(e^{j\Omega})}{X(e^{j\Omega})} = \frac{2-6e^{-j\Omega}}{3-e^{-j\Omega}}  \\
     x_c(t) = sin(1000\pi t) \ \textrm{and} \ x[n] = x_c(nT) \qquad \boxed{\omega_c = 1000\pi} \\
     X_c(j\omega) = \frac{\pi}{j} (\delta(\omega-1000\pi) - \delta(\omega+1000\pi)) \\
-    X(e^{j\Omega}) = \frac{1}{T} \displaystyle\sum_{k=-\infty}^{\infty} X_c\left(j(\frac{\Omega - 2\pi k}{T})\right) = \frac{\pi}{jT} \\ 
-    X(e^{j\Omega}) = \displaystyle\sum_{k=-\infty}^{\infty} \delta(\frac{\Omega - 2\pi k}{T}-1000\pi) - \delta(\frac{\Omega - 2\pi k}{T}+1000\pi) \qquad \boxed{\underbrace{\frac{2\pi}{T} > 2\omega_c \Rightarrow \frac{1}{T} > 1000}_{\textrm{to avoid aliasing}}} \\
+    X(e^{j\Omega}) = \frac{1}{T} \displaystyle\sum_{k=-\infty}^{\infty} X_c\left(j(\frac{\Omega - 2\pi k}{T})\right) \\ 
+    X(e^{j\Omega}) = \frac{\pi}{jT} \displaystyle\sum_{k=-\infty}^{\infty} \delta(\frac{\Omega - 2\pi k}{T}-1000\pi) - \delta(\frac{\Omega - 2\pi k}{T}+1000\pi) \qquad \boxed{\underbrace{\frac{2\pi}{T} > 2\omega_c \Rightarrow \frac{1}{T} > 1000}_{\textrm{to avoid aliasing}}} \\
     \textrm{If there is no aliasing, the below equation holds:} \\
     Y_r(j\omega) = \begin{cases}
     H(e^{j\omega T})X_c(j\omega),& |\omega| \leq \frac{\pi}{T} \\
@@ -376,11 +376,10 @@
      h'[n] =  (\frac{1}{2})^{n} h[n] \longleftrightarrow H'(z) = H(2z) \textrm{, ROC: } |z| > \frac{\sqrt{2}}{2} \\
      \textrm{Since the ROC of \(H'(z)\) contains \(j\omega\)-axis (\(|z|=1\)), the DTFT of \(H'(z)\) exists: } \\
      H'(e^{j\Omega}) = H(2e^{j\Omega}) = \frac{z(2z-1)}{2z^{2} -2z +1} \big|_{z=e^{j\Omega}} \\
-     x[n] = cos(\frac{2000\pi n}{2000}) = cos(\pi n) \\
-     X(e^{j\Omega}) = \displaystyle\sum_{k=-\infty}^{\infty} \pi \delta(\Omega -\pi -2\pi k) + \pi \delta(\Omega + \pi -2\pi k) \\
-     Y(e^{j\Omega}) = X(e^{j\Omega}) H'(e^{j\Omega}) = \left(\displaystyle\sum_{k=-\infty}^{\infty} \pi \delta(\Omega -\pi -2\pi k) + \pi \delta(\Omega + \pi -2\pi k)\right) H'(e^{j\Omega}) \\
-     y[n] = \mathscr{F}^{-1}\{Y(e^{j\Omega})\} = \frac{1}{2\pi} \displaystyle\int_{0}^{2\pi} \left(\displaystyle\sum_{k=-\infty}^{\infty} \pi \delta(\Omega -\pi -2\pi k) + \pi \delta(\Omega + \pi -2\pi k)\right) H'(e^{j\Omega}) e^{j\Omega n} d\Omega \\
-     y[n] = \frac{1}{2} H'(e^{j\pi}) e^{j\pi n} = \frac{3}{10} e^{j\pi n}
+     X(e^{j\Omega}) = \frac{1}{T} \displaystyle\sum_{k=-\infty}^{\infty} X_c\left(j(\frac{\Omega - 2\pi k}{T})\right)  =\displaystyle\sum_{k=-\infty}^{\infty} \frac{\pi}{T} \delta(\frac{\Omega -\pi -2\pi k}{T}) + \frac{\pi}{T} \delta(\frac{\Omega + \pi -2\pi k}{T}) \\
+     Y(e^{j\Omega}) = X(e^{j\Omega}) H'(e^{j\Omega}) = \left(\displaystyle\sum_{k=-\infty}^{\infty} \frac{\pi}{T} \delta(\frac{\Omega -\pi -2\pi k}{T}) + \frac{\pi}{T} \delta(\frac{\Omega + \pi -2\pi k}{T})\right) H'(e^{j\Omega}) \\
+     y[n] = \mathscr{F}^{-1}\{Y(e^{j\Omega})\} = \frac{1}{2\pi} \displaystyle\int_{0}^{2\pi} \left(\displaystyle\sum_{k=-\infty}^{\infty} \frac{\pi}{T} \delta(\frac{\Omega -\pi -2\pi k}{T}) + \frac{\pi}{T} \delta(\frac{\Omega + \pi -2\pi k}{T})\right) H'(e^{j\Omega})\\
+     y[n] = \frac{1}{2T} H'(e^{j\pi}) e^{j\pi n} = 2000\frac{3}{10} e^{j\pi n} = 600 e^{j\pi n}
      \end{math} 
     
 \end{document}
