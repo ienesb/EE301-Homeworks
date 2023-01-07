@@ -376,6 +376,9 @@
      h'[n] =  (\frac{1}{2})^{n} h[n] \longleftrightarrow H'(z) = H(2z) \textrm{, ROC: } |z| > \frac{\sqrt{2}}{2} \\
      \textrm{Since the ROC of \(H'(z)\) contains \(j\omega\)-axis (\(|z|=1\)), the DTFT of \(H'(z)\) exists: } \\
      H'(e^{j\Omega}) = H(2e^{j\Omega}) = \frac{z(2z-1)}{2z^{2} -2z +1} \big|_{z=e^{j\Omega}} \\
+     x[n] = cos(\frac{2000\pi n}{2000}) = cos(\pi n) \\
+     X(e^{j\Omega}) = \displaystyle\sum_{k=-\infty}^{\infty} \pi \delta(\Omega -\pi -2\pi k) + \pi \delta(\Omega + \pi -2\pi k) \\
+     Y(e^{j\Omega}) = X(e^{j\Omega}) H'(e^{j\Omega}) = \left(\displaystyle\sum_{k=-\infty}^{\infty} \pi \delta(\Omega -\pi -2\pi k) + \pi \delta(\Omega + \pi -2\pi k)\right) H'(e^{j\Omega}) \\
      \end{math} 
     
 \end{document}
