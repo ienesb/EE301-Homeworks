@@ -379,6 +379,8 @@
      x[n] = cos(\frac{2000\pi n}{2000}) = cos(\pi n) \\
      X(e^{j\Omega}) = \displaystyle\sum_{k=-\infty}^{\infty} \pi \delta(\Omega -\pi -2\pi k) + \pi \delta(\Omega + \pi -2\pi k) \\
      Y(e^{j\Omega}) = X(e^{j\Omega}) H'(e^{j\Omega}) = \left(\displaystyle\sum_{k=-\infty}^{\infty} \pi \delta(\Omega -\pi -2\pi k) + \pi \delta(\Omega + \pi -2\pi k)\right) H'(e^{j\Omega}) \\
+     y[n] = \mathscr{F}^{-1}\{Y(e^{j\Omega})\} = \frac{1}{2\pi} \displaystyle\int_{0}^{2\pi} \left(\displaystyle\sum_{k=-\infty}^{\infty} \pi \delta(\Omega -\pi -2\pi k) + \pi \delta(\Omega + \pi -2\pi k)\right) H'(e^{j\Omega}) e^{j\Omega n} d\Omega \\
+     y[n] = \frac{1}{2} H'(e^{j\pi}) e^{j\pi n} = \frac{3}{10} e^{j\pi n}
      \end{math} 
     
 \end{document}
