@@ -346,11 +346,19 @@
        
     \section*{Question 4}
     \subsection*{a)}
+    If \(h[n]\) is real, then the following condition must be satisfied: \begin{math} H(z) = H^{*}(z^{*}) \\
+    H(z) = \frac{z(z-1)}{\left(z-a(\frac{1}{\sqrt{2}} - \frac{j}{\sqrt{2}})\right) \left(z-a(\frac{1}{\sqrt{2}} + \frac{j}{\sqrt{2}})\right)} = \left(\frac{z^{*}(z^{*}-1)}{\left(z^{*}-a(\frac{1}{\sqrt{2}} - \frac{j}{\sqrt{2}})\right) \left(z^{*}-a(\frac{1}{\sqrt{2}} + \frac{j}{\sqrt{2}})\right)}\right)^{*} = H^{*}(z^{*}) \\ \\
+    \end{math} 
+    Thus, \(h[n]\) is a real-valued signal. 
     
      \subsection*{b)}
-    
+     
      \subsection*{c)}
-    
+    If \begin{math} a = \sqrt{2} \Rightarrow H(z) = \frac{z(z-1)}{z^{2}-2z+2} \\
+     x[n] = u[n-1] \Rightarrow X(z) = \displaystyle\sum_{n=-\infty}^{\infty} u[n-1] z^{-n} = \displaystyle\sum_{n=1}^{\infty} z^{-n} = \displaystyle\sum_{n=0}^{\infty} z^{-n} - 1  = \frac{1}{z-1}, |z| < 1 \\
+     Y(z) = X(z)H(z) = \frac{z}{z^{2}-2z+2} = \frac{z}{(z-1+j)(z-1-j)} \textrm{, ROC: } |z| > \sqrt{2} \\
+     Y(z) = \frac{z^{-1}}{(1- (1-j)z^{-1})(1-(1+j)z^{-1})} = \frac{c_1}{1-(1-j)z^{-1}} +  \frac{c_2}{1-(1+j)z^{-1}} \\       	Y(z) = \frac{j/2}{1-(1-j)z^{-1}} +  \frac{-j/2}{1-(1+j)z^{-1}} \Longrightarrow y[n] = \frac{j}{2} (1-j)^{n} u[n] -  \frac{j}{2} (1+j)^{n} u[n] \\
+    \end{math} 
      \subsection*{d)}     
     
 \end{document}
